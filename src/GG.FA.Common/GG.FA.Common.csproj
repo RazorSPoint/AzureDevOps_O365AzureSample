@@ -1,0 +1,40 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Platforms>AnyCPU;x86</Platforms>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DocumentationFile></DocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">
+    <PlatformTarget>x86</PlatformTarget>
+    <DocumentationFile />
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Identity.Client" Version="1.1.2-preview0008" />
+    <PackageReference Include="Microsoft.IdentityModel.Clients.ActiveDirectory" Version="3.19.2" />
+    <PackageReference Include="System.Security.Cryptography.ProtectedData" Version="4.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\GG.FA.Model\GG.FA.Model.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Microsoft.Azure.WebJobs.Host">
+      <HintPath>C:\Users\SebastianSchütze\.nuget\packages\microsoft.azure.webjobs\3.0.0-beta5\lib\netstandard2.0\Microsoft.Azure.WebJobs.Host.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Graph">
+      <HintPath>C:\Users\SebastianSchütze\.nuget\packages\microsoft.graph\1.8.1\lib\netstandard1.1\Microsoft.Graph.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Graph.Core">
+      <HintPath>C:\Users\SebastianSchütze\.nuget\packages\microsoft.graph.core\1.8.0\lib\netstandard1.1\Microsoft.Graph.Core.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>
