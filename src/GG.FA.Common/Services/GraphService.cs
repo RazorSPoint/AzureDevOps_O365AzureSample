@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Runtime.Serialization.Json;
@@ -160,6 +161,16 @@ namespace GG.FA.Common.Services
             return userItems;
         }
 
+        public async Task<User> AssignE2LicenseToUserById(string userId)
+        {
+            var skus = await GraphClient.SubscribedSkus.Request().GetAsync();
+            var e2Sku = skus.FirstOrDefault(sku => sku.SkuPartNumber.Equals("STANDARDWOFFPACK"));
+
+            var assignedLicense = new List<AssignedLicense>() { new AssignedLicense { SkuId = e2Sku.SkuId } };
+
+            return await GraphClient.Users[userId].AssignLicense(assignedLicense, new Guid[0]).Request().PostAsync();
+        }
+
         public static async Task<string> GetAccessTokenWithClientSecret(string clientId, string clientSecret, string tenantId)
         {
             // prepare request content
@@ -188,8 +199,6 @@ namespace GG.FA.Common.Services
 
             return graphToken.Value;
         }
-
-   
 
         public static User GetAdUserObjectFromUserListItem(ListItem listItem)
         {

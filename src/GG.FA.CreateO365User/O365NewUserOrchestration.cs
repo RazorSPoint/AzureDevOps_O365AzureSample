@@ -59,19 +59,14 @@ namespace GG.FA.CreateO365User
 
                 var userId = await graphService.CreateUserAsync(user);
 
-                var skus = await graphService.GraphClient.SubscribedSkus.Request().GetAsync();
-                var e2Sku = skus.FirstOrDefault(sku => sku.SkuPartNumber.Equals("STANDARDWOFFPACK"));
-
-                var assignedLicense = new List<AssignedLicense>() { new AssignedLicense { SkuId = e2Sku.SkuId } };
-
-                user = await graphService.GraphClient.Users[userId].AssignLicense(assignedLicense, new Guid[0]).Request()
-                    .PostAsync();
-
+                user = await graphService.AssignE2LicenseToUserById(userId);
             }
             
            
 
             return "true!";
         }
+
+       
     }
 }
