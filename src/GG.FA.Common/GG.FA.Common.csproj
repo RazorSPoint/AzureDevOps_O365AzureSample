@@ -3,6 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <Platforms>AnyCPU;x86</Platforms>
+    <Configurations>Debug;Release;Debug Common Library;Release Common Library</Configurations>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -10,7 +11,17 @@
     <DocumentationFile></DocumentationFile>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug Common Library|AnyCPU'">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DocumentationFile />
+  </PropertyGroup>
+
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">
+    <PlatformTarget>x86</PlatformTarget>
+    <DocumentationFile />
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug Common Library|x86'">
     <PlatformTarget>x86</PlatformTarget>
     <DocumentationFile />
   </PropertyGroup>

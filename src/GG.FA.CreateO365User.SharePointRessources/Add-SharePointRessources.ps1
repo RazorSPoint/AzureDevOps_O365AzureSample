@@ -4,7 +4,7 @@ Param(
 		[string]$WebUrl,
 		[string]$UserName,
 		[string]$Password,
-		[string]$XmlPnPFile = "PnPXml/UserInventoryRessources.xml"
+		[string]$XmlPnPPath = "PnPXml"
 )
 
 $securePassword = ConvertTo-SecureString -String $Password -AsPlainText -Force
@@ -12,7 +12,15 @@ $credentials = New-Object -typename System.Management.Automation.PSCredential -a
 
 Connect-PnPOnline -Url $WebUrl -Credentials $credentials
 
+$pnpTemplates = ($XmlPnPPath | Get-ChildItem | where {$_.Name -like "*.xml"} | select FullName).FullName
 
-$XmlPnPFile = [System.IO.Path]::GetFullPath([System.IO.Path]::Combine($PSScriptRoot, $XmlPnPFile))
+$pnpTemplates | foreach {
 
-Apply-PnPProvisioningTemplate -Path $XmlPnPFile 
+	$XmlPnPFile = $_
+
+	Apply-PnPProvisioningTemplate -Path $XmlPnPFile 
+
+}
+
+
+

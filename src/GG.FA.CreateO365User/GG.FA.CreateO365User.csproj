@@ -3,6 +3,7 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <AzureFunctionsVersion>v2</AzureFunctionsVersion>
     <Platforms>AnyCPU;x86</Platforms>
+    <Configurations>Debug;Release;Debug Common Library;Release Common Library</Configurations>
   </PropertyGroup>
   <ItemGroup>
     <Compile Remove="ExchangeOnline\**" />

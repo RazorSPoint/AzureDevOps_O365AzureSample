@@ -3,6 +3,7 @@
     <TargetFramework>net461</TargetFramework>
     <AssemblyName>GG.FA.CreateO365User.PowerShell</AssemblyName>
     <RootNamespace>GG.FA.CreateO365User.PowerShell</RootNamespace>
+    <Configurations>Debug;Release;Debug Common Library;Release Common Library</Configurations>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.NET.Sdk.Functions" Version="1.0.8" />

@@ -1,0 +1,200 @@
+﻿<?xml version="1.0"?>
+<pnp:Provisioning xmlns:pnp="http://schemas.dev.office.com/PnP/2017/05/ProvisioningSchema">
+  <pnp:Preferences Generator="OfficeDevPnP.Core, Version=2.18.1709.0, Culture=neutral, PublicKeyToken=3751622786b357c2" />
+  <pnp:Templates ID="CONTAINER-TEMPLATE-2F32E41E8B59431C9D43B841067D8076">
+    <pnp:ProvisioningTemplate ID="TEMPLATE-2F32E41E8B59431C9D43B841067D8076" Version="1" BaseSiteTemplate="STS#1" Scope="Web">
+      <pnp:Lists>
+        <pnp:ListInstance Title="Benutzerliste" Description="Benutzer Inventurliste für alle Mitglieder" DocumentTemplate="" TemplateType="100" Url="Lists/UserInventory" MinorVersionLimit="0" MaxVersionLimit="0" DraftVersionVisibility="0" TemplateFeatureID="00bfea71-de22-43b2-a848-c05709900100" ContentTypesEnabled="true" EnableFolderCreation="false" DefaultDisplayFormUrl="{site}/Lists/UserInventory/DispForm.aspx" DefaultEditFormUrl="{site}/Lists/UserInventory/EditForm.aspx" DefaultNewFormUrl="{site}/Lists/UserInventory/NewForm.aspx" ImageUrl="/_layouts/15/images/itdatash.png?rev=44" ValidationFormula="" ValidationMessage="">
+          <pnp:ContentTypeBindings>
+            <pnp:ContentTypeBinding ContentTypeID="0x01" Default="true" />
+            <pnp:ContentTypeBinding ContentTypeID="0x0120" />
+          </pnp:ContentTypeBindings>
+          <pnp:Views>
+            <View Name="{DE338C72-E4EA-4F2C-BF17-EB8C142A6365}" DefaultView="TRUE" MobileView="TRUE" MobileDefaultView="TRUE" Type="HTML" DisplayName="Alle Benutzer" Url="/sites/gut-goedelitz/UserAdminiatration/Lists/UserInventory/Alle Benutzer.aspx" Level="1" BaseViewID="1" ContentTypeID="0x" ImageUrl="/_layouts/15/images/generic.png?rev=44">
+              <Query>
+                <Where>
+                  <Neq>
+                    <FieldRef Name="Testbenutzer" />
+                    <Value Type="Boolean">1</Value>
+                  </Neq>
+                </Where>
+              </Query>
+              <ViewFields>
+                <FieldRef Name="ID" />
+                <FieldRef Name="AccountStatus" />
+                <FieldRef Name="WeiterleitungAktiv" />
+                <FieldRef Name="Title" />
+                <FieldRef Name="Vorname" />
+                <FieldRef Name="Nachname" />
+                <FieldRef Name="E_x002d_Mail" />
+                <FieldRef Name="Segment" />
+                <FieldRef Name="WK_x002d_Bereich" />
+                <FieldRef Name="Jahrgang" />
+                <FieldRef Name="Ort" />
+                <FieldRef Name="Bundesland" />
+                <FieldRef Name="Festnetz" />
+                <FieldRef Name="Mobiltelefon" />
+                <FieldRef Name="Abteilung" />
+                <FieldRef Name="Testbenutzer" />
+                <FieldRef Name="WKBereich" />
+              </ViewFields>
+              <RowLimit Paged="TRUE">30</RowLimit>
+              <Aggregations Value="Off" />
+              <JSLink>clienttemplates.js</JSLink>
+            </View>
+            <View Name="{5595599C-2F48-4FED-B149-1DCAA3BAA85A}" Type="HTML" DisplayName="Testbenutzer" Url="/sites/gut-goedelitz/UserAdminiatration/Lists/UserInventory/PersonalViews.aspx" Level="1" BaseViewID="1" ContentTypeID="0x" ImageUrl="/_layouts/15/images/generic.png?rev=44">
+              <Query>
+                <Where>
+                  <Eq>
+                    <FieldRef Name="Testbenutzer" />
+                    <Value Type="Boolean">1</Value>
+                  </Eq>
+                </Where>
+              </Query>
+              <ViewFields>
+                <FieldRef Name="ID" />
+                <FieldRef Name="AccountStatus" />
+                <FieldRef Name="WeiterleitungAktiv" />
+                <FieldRef Name="Testbenutzer" />
+                <FieldRef Name="Title" />
+                <FieldRef Name="Vorname" />
+                <FieldRef Name="Nachname" />
+                <FieldRef Name="E_x002d_Mail" />
+                <FieldRef Name="Segment" />
+                <FieldRef Name="WK_x002d_Bereich" />
+                <FieldRef Name="Jahrgang" />
+                <FieldRef Name="Abteilung" />
+              </ViewFields>
+              <RowLimit Paged="TRUE">30</RowLimit>
+              <JSLink>clienttemplates.js</JSLink>
+            </View>
+          </pnp:Views>
+          <pnp:Fields>
+            <Field ID="{3a6b296c-3f50-445c-a13f-9c679ea9dda3}" Hidden="FALSE" ReadOnly="TRUE" Required="FALSE" Type="Text" Name="ComplianceAssetId" ShowInFileDlg="FALSE" DisplayName="Complianceobjekt-ID" SourceID="http://schemas.microsoft.com/sharepoint/v3" StaticName="ComplianceAssetId" FromBaseType="TRUE" ColName="nvarchar3" RowOrdinal="0" Sealed="FALSE" Version="2" />
+            <Field Type="Text" DisplayName="Vorname" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" MaxLength="255" ID="{e65d9670-ee98-431d-ab4f-2ea216963ff2}" SourceID="{{listid:Benutzerliste}}" StaticName="Vorname" Name="Vorname" ColName="nvarchar4" RowOrdinal="0" CustomFormatter="" ShowInFiltersPane="Removed" Version="7" />
+            <Field Type="Text" DisplayName="Nachname" Required="FALSE" ID="{ed0b409a-258d-4d73-bf23-437d89d5fba7}" SourceID="{{listid:Benutzerliste}}" StaticName="Nachname" Name="Nachname" ColName="nvarchar5" RowOrdinal="0" ShowInFiltersPane="Removed" Version="6" />
+            <Field Type="Text" DisplayName="E-Mail" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" MaxLength="255" ID="{c1f9fa37-4f8c-43da-8d38-8a20076c9176}" SourceID="{{listid:Benutzerliste}}" StaticName="E_x002d_Mail" Name="E_x002d_Mail" ColName="nvarchar6" RowOrdinal="0" CustomFormatter="" ShowInFiltersPane="Removed" Version="7" />
+            <Field Name="Abteilung" FromBaseType="FALSE" Type="Choice" DisplayName="Abteilung" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" Format="Dropdown" FillInChoice="FALSE" ID="{00eb86e1-1953-4258-a62b-30e195043d43}" StaticName="Abteilung" SourceID="{{listid:Benutzerliste}}" ColName="nvarchar7" RowOrdinal="0" Version="6">
+              <CHOICES>
+                <CHOICE>dt-biografien.gut-goedelitz.de</CHOICE>
+                <CHOICE>gut-goedelitz.de</CHOICE>
+                <CHOICE>hsm.gut-goedelitz.de</CHOICE>
+                <CHOICE>***REMOVED***</CHOICE>
+              </CHOICES>
+            </Field>
+            <Field Name="Segment" FromBaseType="FALSE" Type="Choice" DisplayName="Segment" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" Format="Dropdown" FillInChoice="FALSE" ID="{748d4d1e-f85d-49a3-a7ab-e1bef5c10a3e}" StaticName="Segment" SourceID="{{listid:Benutzerliste}}" ColName="nvarchar8" RowOrdinal="0" CustomFormatter="" Version="7">
+              <CHOICES>
+                <CHOICE>Justiz</CHOICE>
+                <CHOICE>Kultur</CHOICE>
+                <CHOICE>Medien</CHOICE>
+                <CHOICE>Wirtschaft</CHOICE>
+                <CHOICE>Wissenschaft</CHOICE>
+                <CHOICE>Politik</CHOICE>
+              </CHOICES>
+            </Field>
+            <Field Name="Jahrgang" FromBaseType="FALSE" Type="Choice" DisplayName="Jahrgang" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" Format="Dropdown" FillInChoice="FALSE" ID="{b1991a07-bd30-46fb-b29e-46c1e0df55c9}" StaticName="Jahrgang" SourceID="{{listid:Benutzerliste}}" ColName="nvarchar9" RowOrdinal="0" Version="6">
+              <CHOICES>
+                <CHOICE>2011</CHOICE>
+                <CHOICE>2012</CHOICE>
+                <CHOICE>2013</CHOICE>
+                <CHOICE>2014</CHOICE>
+                <CHOICE>2015</CHOICE>
+                <CHOICE>2016</CHOICE>
+                <CHOICE>2017</CHOICE>
+                <CHOICE>2018</CHOICE>
+                <CHOICE>2019</CHOICE>
+                <CHOICE>2020</CHOICE>
+                <CHOICE>2021</CHOICE>
+                <CHOICE>2022</CHOICE>
+                <CHOICE>2023</CHOICE>
+                <CHOICE>2024</CHOICE>
+                <CHOICE>2025</CHOICE>
+                <CHOICE>2026</CHOICE>
+                <CHOICE>2027</CHOICE>
+                <CHOICE>2028</CHOICE>
+                <CHOICE>2029</CHOICE>
+                <CHOICE>2030</CHOICE>
+                <CHOICE>2031</CHOICE>
+                <CHOICE>2032</CHOICE>
+                <CHOICE>2033</CHOICE>
+                <CHOICE>2034</CHOICE>
+                <CHOICE>2035</CHOICE>
+                <CHOICE>2036</CHOICE>
+                <CHOICE>2037</CHOICE>
+              </CHOICES>
+            </Field>
+            <Field Type="Text" DisplayName="Ort" Required="FALSE" ID="{4a33526a-a37a-4981-a795-f793ede59ef4}" SourceID="{{listid:Benutzerliste}}" StaticName="Ort" Name="Ort" ColName="nvarchar10" RowOrdinal="0" Version="5" />
+            <Field Name="Bundesland" FromBaseType="FALSE" Type="Choice" DisplayName="Bundesland" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" Format="Dropdown" FillInChoice="FALSE" ID="{f8c6ac0a-82ad-494c-8a85-395b71f31cc4}" StaticName="Bundesland" SourceID="{{listid:Benutzerliste}}" ColName="nvarchar11" RowOrdinal="0" CustomFormatter="" Version="7">
+              <CHOICES>
+                <CHOICE>Baden-Württemberg</CHOICE>
+                <CHOICE>Bayern</CHOICE>
+                <CHOICE>Berlin</CHOICE>
+                <CHOICE>Brandenburg</CHOICE>
+                <CHOICE>Bremen</CHOICE>
+                <CHOICE>Hamburg</CHOICE>
+                <CHOICE>Hessen</CHOICE>
+                <CHOICE>Mecklenburg-Vorpommern</CHOICE>
+                <CHOICE>Niedersachsen</CHOICE>
+                <CHOICE>Nordrhein-Westfalen</CHOICE>
+                <CHOICE>Rheinland-Pfalz</CHOICE>
+                <CHOICE>Saarland</CHOICE>
+                <CHOICE>Sachsen</CHOICE>
+                <CHOICE>Sachsen-Anhalt</CHOICE>
+                <CHOICE>Schleswig-Holstein</CHOICE>
+                <CHOICE>Thüringen</CHOICE>
+              </CHOICES>
+            </Field>
+            <Field Type="Text" DisplayName="Festnetz" Required="FALSE" ID="{49bab8e6-626d-4bf1-bccc-a64b0e89f80f}" SourceID="{{listid:Benutzerliste}}" StaticName="Festnetz" Name="Festnetz" ColName="nvarchar12" RowOrdinal="0" ShowInFiltersPane="Removed" Version="6" />
+            <Field Type="Text" DisplayName="Mobiltelefon" Required="FALSE" ID="{fcd3a6e1-be26-4037-bceb-319829384deb}" SourceID="{{listid:Benutzerliste}}" StaticName="Mobiltelefon" Name="Mobiltelefon" ColName="nvarchar13" RowOrdinal="0" ShowInFiltersPane="Removed" Version="6" />
+            <Field Name="WK_x002d_Bereich" FromBaseType="FALSE" Type="Choice" DisplayName="WK-Bereich" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" Format="Dropdown" FillInChoice="FALSE" ID="{dc3835ab-ebc8-4abd-bc2b-be4c62aaf7f4}" StaticName="WK_x002d_Bereich" SourceID="{{listid:Benutzerliste}}" ColName="nvarchar14" RowOrdinal="0" Version="7" CustomFormatter="">
+              <CHOICES>
+                <CHOICE>Beirat</CHOICE>
+                <CHOICE>Mitglied</CHOICE>
+              </CHOICES>
+            </Field>
+            <Field Type="Boolean" DisplayName="Weiterleitung Aktiv" EnforceUniqueValues="FALSE" Indexed="FALSE" ID="{8da9043f-72e3-400c-aea3-946fabf2e92e}" SourceID="{{listid:Benutzerliste}}" StaticName="WeiterleitungAktiv" Name="WeiterleitungAktiv" ColName="bit1" RowOrdinal="0" CustomFormatter="" Required="FALSE" Version="6">
+              <Default>0</Default>
+            </Field>
+            <Field Type="Choice" DisplayName="Account Status" Required="TRUE" EnforceUniqueValues="FALSE" Indexed="FALSE" Format="Dropdown" FillInChoice="FALSE" ID="{0ffcf0ca-231f-49f5-b9da-384a856cdcb9}" SourceID="{{listid:Benutzerliste}}" StaticName="AccountStatus" Name="AccountStatus" ColName="nvarchar15" RowOrdinal="0" CustomFormatter="" Version="6">
+              <Default>nicht angelegt</Default>
+              <CHOICES>
+                <CHOICE>nicht angelegt</CHOICE>
+                <CHOICE>angelegt</CHOICE>
+                <CHOICE>nicht anlegen</CHOICE>
+              </CHOICES>
+            </Field>
+            <Field Type="Boolean" DisplayName="Testbenutzer" EnforceUniqueValues="FALSE" Indexed="FALSE" ID="{1ed6ec0d-ce29-4646-a83e-dfa631bc7d07}" SourceID="{{listid:Benutzerliste}}" StaticName="Testbenutzer" Name="Testbenutzer" ColName="bit2" RowOrdinal="0" Version="4">
+              <Default>0</Default>
+            </Field>
+            <Field ID="{ccc1037f-f65e-434a-868e-8c98af31fe29}" Name="_ComplianceFlags" DisplaceOnUpgrade="TRUE" Hidden="FALSE" ReadOnly="TRUE" ShowInFileDlg="FALSE" Type="Lookup" DisplayName="Bezeichnungseinstellung" List="Docs" FieldRef="ID" ShowField="ComplianceFlags" JoinColName="DoclibRowId" JoinRowOrdinal="0" JoinType="INNER" SchemaVersion="16.0.93.0" RecreateIfMissing="TRUE" SourceID="http://schemas.microsoft.com/sharepoint/v3" StaticName="_ComplianceFlags" FromBaseType="TRUE" Sealed="FALSE" Version="4" />
+            <Field ID="{d4b6480a-4bed-4094-9a52-30181ea38f1d}" Name="_ComplianceTag" DisplaceOnUpgrade="TRUE" Hidden="FALSE" ReadOnly="TRUE" ShowInFileDlg="FALSE" Type="Lookup" DisplayName="Bezeichnungen" List="Docs" FieldRef="ID" ShowField="ComplianceTag" JoinColName="DoclibRowId" JoinRowOrdinal="0" JoinType="INNER" SchemaVersion="16.0.93.0" RecreateIfMissing="TRUE" SourceID="http://schemas.microsoft.com/sharepoint/v3" StaticName="_ComplianceTag" FromBaseType="TRUE" Sealed="FALSE" Version="4" />
+            <Field ID="{92be610e-ddbb-49f4-b3b1-5c2bc768df8f}" Name="_ComplianceTagWrittenTime" DisplaceOnUpgrade="TRUE" Hidden="FALSE" ReadOnly="TRUE" ShowInFileDlg="FALSE" Type="Lookup" DisplayName="Bezeichnung angewendet" List="Docs" FieldRef="ID" ShowField="ComplianceTagWrittenTime" JoinColName="DoclibRowId" JoinRowOrdinal="0" JoinType="INNER" SchemaVersion="16.0.93.0" RecreateIfMissing="TRUE" SourceID="http://schemas.microsoft.com/sharepoint/v3" StaticName="_ComplianceTagWrittenTime" FromBaseType="TRUE" Sealed="FALSE" Version="4" />
+            <Field ID="{418d7676-2d6f-42cf-a16a-e43d2971252a}" Name="_ComplianceTagUserId" DisplaceOnUpgrade="TRUE" Hidden="FALSE" ReadOnly="TRUE" ShowInFileDlg="FALSE" Type="Lookup" DisplayName="Bezeichnung angewendet von" List="Docs" FieldRef="ID" ShowField="ComplianceTagUserId" JoinColName="DoclibRowId" JoinRowOrdinal="0" JoinType="INNER" SchemaVersion="16.0.93.0" RecreateIfMissing="TRUE" SourceID="http://schemas.microsoft.com/sharepoint/v3" StaticName="_ComplianceTagUserId" FromBaseType="TRUE" Sealed="FALSE" Version="4" />
+            <Field Type="Lookup" DisplayName="WKBereich" Required="FALSE" EnforceUniqueValues="FALSE" List="{listid:WK-Bereich}" ShowField="Title" UnlimitedLengthInDocumentLibrary="FALSE" Indexed="TRUE" RelationshipDeleteBehavior="Restrict" ID="{6d704375-552b-46ef-a45f-5f5d72a6a7be}" SourceID="{{listid:Benutzerliste}}" StaticName="WKBereich" Name="WKBereich" ColName="int1" RowOrdinal="0" Version="1" />
+            <Field ID="{8382d247-72a9-44b1-9794-7b177edc89f3}" Type="Computed" ReadOnly="TRUE" Name="_IsRecord" DisplayName="Element ist eine Aufzeichnung" DisplaceOnUpgrade="TRUE" SchemaVersion="16.0.93.0" RecreateIfMissing="TRUE" NoCustomize="TRUE" SourceID="http://schemas.microsoft.com/sharepoint/v3" StaticName="_IsRecord" FromBaseType="TRUE">
+              <FieldRefs>
+                <FieldRef Name="_ComplianceFlags" />
+              </FieldRefs>
+              <DisplayPattern>
+                <Switch>
+                  <Expr>
+                    <LookupColumn Name="_ComplianceFlags" />
+                  </Expr>
+                  <Case Value="1">
+                    <HTML>Ja</HTML>
+                  </Case>
+                  <Case Value="3">
+                    <HTML>Ja</HTML>
+                  </Case>
+                  <Default>
+                    <HTML>Nein</HTML>
+                  </Default>
+                </Switch>
+              </DisplayPattern>
+            </Field>
+          </pnp:Fields>
+        </pnp:ListInstance>
+      </pnp:Lists>
+    </pnp:ProvisioningTemplate>
+  </pnp:Templates>
+</pnp:Provisioning>

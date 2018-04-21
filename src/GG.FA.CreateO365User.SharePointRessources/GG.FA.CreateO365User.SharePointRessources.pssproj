@@ -25,13 +25,23 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug Common Library' ">
+    <OutputPath>bin\Debug Common Library\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release Common Library' ">
+    <OutputPath>bin\Release Common Library\</OutputPath>
+  </PropertyGroup>
   <ItemGroup>
     <Folder Include="PnPXml\" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="PnPXml\UserInventoryRessources.xml" />
+    <Compile Include="PnPXml\01_WebSettings.xml" />
     <Compile Include="Add-SharePointRessources.ps1" />
     <Compile Include="Add-SharePointRessources.tests.ps1" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="PnPXml\03_UserList.xml" />
+    <Content Include="PnPXml\02_WK-BereichList.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Target Name="Build" />
