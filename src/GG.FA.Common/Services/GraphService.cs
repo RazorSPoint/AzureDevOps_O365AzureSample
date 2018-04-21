@@ -10,48 +10,58 @@ using System.Xml.Linq;
 using System.Xml.XPath;
 using GG.FA.Common.Interfaces;
 using GG.FA.Common.Utilities;
+using GG.FA.Model;
 using Microsoft.Graph;
 
 namespace GG.FA.Common.Services
 {
-    public class GraphService
+    public class GraphService: IGraphService
     {
        
-        /// <summary>
-        /// logger interface used to log
-        /// </summary>
+        /// <summary>   logger interface used to log. </summary>
         private readonly ILogger _log;
 
-        /// <summary>
-        /// Instance of the graph client
-        /// </summary>
+        /// <summary>   Instance of the graph client. </summary>
         private GraphServiceClient _graphClient = null;
- 
-        /// <summary>
-        /// Gets the graph client instance
-        /// </summary>
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   Gets the graph client instance. </summary>
+        ///
+        /// <value> The graph client. </value>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
         public GraphServiceClient GraphClient => _graphClient;
 
         private const string Scope = "https://graph.microsoft.com/.default";
 
-        /// <summary>
-        /// Constructor for the graph client. Exepcts a token and a ILogger instance.
-        /// </summary>
-        /// <param name="graphToken">the token string for the graph client for authentification</param>
-        /// <param name="log">the logger instance that will be used in the graph client</param>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   Constructor for the graph client. Exepcts a token and a ILogger instance. </summary>
+        ///
+        /// <remarks>   Sebastian Schütze, 07/04/2018. </remarks>
+        ///
+        /// <param name="graphToken">   the token string for the graph client for authentification. </param>
+        /// <param name="log">          the logger instance that will be used in the graph client. </param>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
         public GraphService(string graphToken, ILogger log)
         {
             _log = log;
             this.GetAuthenticatedClient(graphToken);
         }
 
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
         /// <summary>
-        /// Get an access token for the given context and resourceId. An attempt is first made to 
-        /// acquire the token silently. If that fails, then we try to acquire the token by prompting the user.
+        /// Get an access token for the given context and resourceId. An attempt is first made to acquire
+        /// the token silently. If that fails, then we try to acquire the token by prompting the user.
         /// </summary>
-        /// <param name="graphToken">the token string for the graph client for authentification</param>
-        /// <returns>returns a the graph client instance</returns>
-        private GraphServiceClient GetAuthenticatedClient(string graphToken)
+        ///
+        /// <remarks>   Sebastian Schütze, 07/04/2018. </remarks>
+        ///
+        /// <param name="graphToken">   the token string for the graph client for authentification. </param>
+        ///
+        /// <returns>   returns a the graph client instance. </returns>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        public GraphServiceClient GetAuthenticatedClient(string graphToken)
         {
             if (GraphClient != null) return GraphClient;
 
@@ -77,12 +87,16 @@ namespace GG.FA.Common.Services
             return GraphClient;
         }
 
-        /// <summary>
-        /// Creates a O365 user asynchronously
-        /// </summary>
-        /// <param name="user"></param>
-        /// <returns></returns>
-        /// <see cref="https://developer.microsoft.com/en-us/graph/docs/api-reference/v1.0/resources/user"/>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   Creates a O365 user asynchronously. </summary>
+        ///
+        /// <remarks>   Sebastian Schütze, 07/04/2018. </remarks>
+        ///
+        /// <param name="user"> . </param>
+        ///
+        /// <returns>   An asynchronous result that yields the create user. </returns>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
         public async Task<string> CreateUserAsync(User user)
         {
             string createdUserId = null;
@@ -107,13 +121,24 @@ namespace GG.FA.Common.Services
             return createdUserId;
         }
 
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   Adds a user to group asynchronously by 'groupId'. </summary>
+        ///
+        /// <remarks>   Sebastian Schütze, 07/04/2018. </remarks>
+        ///
+        /// <param name="userId">   Identifier for the user. </param>
+        /// <param name="groupId">  Identifier for the group. </param>
+        ///
+        /// <returns>   An asynchronous result that yields the add user to group. </returns>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
         public async Task<bool> AddUserToGroupAsync(string userId, string groupId)
         {
             var userAdded = false;
          
             try
             {
-                User userToAdd = new User { Id = userId };
+                var userToAdd = new User { Id = userId };
 
                 await _graphClient.Groups[groupId].Members.References.Request().AddAsync(userToAdd);
                 _log.Info("Added user " + userId + " to the group: " + groupId);
@@ -128,9 +153,22 @@ namespace GG.FA.Common.Services
             }
             return userAdded;
         }
-        public async Task<IListItemsCollectionPage> GetUserFromSpUserListAsync(string siteId, string listId, bool testuserOnly)
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   Gets user from the custom SharePoint User List asynchronous. </summary>
+        ///
+        /// <remarks>   Sebastian Schütze, 07/04/2018. </remarks>
+        ///
+        /// <param name="siteId">       Identifier for the site. </param>
+        /// <param name="listId">       Identifier for the list. </param>
+        /// <param name="testuserOnly"> If true, test user only are returned. </param>
+        ///
+        /// <returns>   An asynchronous result that yields the user from SharePoint user list. </returns>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        public async Task<IEnumerable<ListItem>> GetUserFromSpUserListAsync(string siteId, string listId, bool testuserOnly)
         {
-            var userItems = new ListItemsCollectionPage();
+            IEnumerable<ListItem> userItems = new List<ListItem>();
 
             try
             {
@@ -140,17 +178,21 @@ namespace GG.FA.Common.Services
                     .Top(5000);
 
                 request.Headers.Add(new HeaderOption("Prefer", "HonorNonIndexedQueriesWarningMayFailRandomly"));
+                
+                userItems = ((ListItemsCollectionPage) await request.GetAsync()).ToList();
+
 
                 if (testuserOnly)
                 {
-                    request = request.Filter("fields/Testbenutzer eq True");
-                }
-                else
-                { 
-                    request = request.Filter("fields/AccountStatus eq 'nicht angelegt'");
+                   userItems = userItems.Where(u =>
+                   {
+                       return
+                           u.Fields.AdditionalData.ContainsKey("Testbenutzer")
+                           && (bool) u.Fields.AdditionalData["Testbenutzer"];
+                   });
                 }
                 
-                userItems = (ListItemsCollectionPage) await request.GetAsync();
+                userItems = userItems.Where(u => u.Fields.AdditionalData.ContainsKey("AccountStatus") && (string)u.Fields.AdditionalData["AccountStatus"] == "nicht angelegt");
             }
 
             catch (ServiceException e)
@@ -161,6 +203,16 @@ namespace GG.FA.Common.Services
             return userItems;
         }
 
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   Assign an E2 license to an O365 user by user id. </summary>
+        ///
+        /// <remarks>   Sebastian Schütze, 07/04/2018. </remarks>
+        ///
+        /// <param name="userId">   Identifier for the user. </param>
+        ///
+        /// <returns>   An asynchronous result that yields a User. </returns>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
         public async Task<User> AssignE2LicenseToUserById(string userId)
         {
             var skus = await GraphClient.SubscribedSkus.Request().GetAsync();
@@ -170,6 +222,18 @@ namespace GG.FA.Common.Services
 
             return await GraphClient.Users[userId].AssignLicense(assignedLicense, new Guid[0]).Request().PostAsync();
         }
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   Gets access token with client secret. </summary>
+        ///
+        /// <remarks>   Sebastian Schütze, 07/04/2018. </remarks>
+        ///
+        /// <param name="clientId">     Identifier for the client. </param>
+        /// <param name="clientSecret"> The client secret. </param>
+        /// <param name="tenantId">     Identifier for the tenant. </param>
+        ///
+        /// <returns>   An asynchronous result that yields the access token with client secret. </returns>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
 
         public static async Task<string> GetAccessTokenWithClientSecret(string clientId, string clientSecret, string tenantId)
         {
@@ -200,6 +264,16 @@ namespace GG.FA.Common.Services
             return graphToken.Value;
         }
 
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   Gets ad user object from user list item. </summary>
+        ///
+        /// <remarks>   Sebastian Schütze, 07/04/2018. </remarks>
+        ///
+        /// <param name="listItem"> The list item. </param>
+        ///
+        /// <returns>   The ad user object from user list item. </returns>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
         public static User GetAdUserObjectFromUserListItem(ListItem listItem)
         {
             var fields = listItem.Fields.AdditionalData;
@@ -221,8 +295,8 @@ namespace GG.FA.Common.Services
             var userPrincipalName = O365UserPropertyHelper.UserPrincipalName(firstname, lastname, department);
             var searchableDisplayName = O365UserPropertyHelper.GetSearchableDisplayName(title, firstname, lastname);
             var displayName = O365UserPropertyHelper.GetDisplayName(title, firstname, lastname);
-
-            return new User()
+          
+            return new WkUser()
             {
                 AccountEnabled = true,
                 UserPrincipalName = userPrincipalName,
@@ -242,5 +316,18 @@ namespace GG.FA.Common.Services
                 UsageLocation = "DE"
             };
         }
+    }
+
+    public interface IGraphService
+    {
+        GraphServiceClient GetAuthenticatedClient(string graphToken);
+
+        Task<string> CreateUserAsync(User user);
+        
+        Task<bool> AddUserToGroupAsync(string userId, string groupId);
+        
+        Task<IEnumerable<ListItem>> GetUserFromSpUserListAsync(string siteId, string listId,bool testuserOnly);
+        
+        Task<User> AssignE2LicenseToUserById(string userId);
     }
 }

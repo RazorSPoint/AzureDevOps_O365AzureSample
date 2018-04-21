@@ -5,4 +5,10 @@
     <Platforms>AnyCPU;x86</Platforms>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Reference Include="Microsoft.Graph">
+      <HintPath>C:\Users\SebastianSchütze\.nuget\packages\microsoft.graph\1.8.1\lib\netstandard1.1\Microsoft.Graph.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>

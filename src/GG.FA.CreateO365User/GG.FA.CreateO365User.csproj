@@ -5,6 +5,14 @@
     <Platforms>AnyCPU;x86</Platforms>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Remove="ExchangeOnline\**" />
+    <EmbeddedResource Remove="ExchangeOnline\**" />
+    <None Remove="ExchangeOnline\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove=".gitignore" />
+  </ItemGroup>
+  <ItemGroup>
     <PackageReference Include="Microsoft.Azure.WebJobs.Extensions.AuthTokens" Version="1.0.0-beta3" />
     <PackageReference Include="Microsoft.Azure.WebJobs.Extensions.MicrosoftGraph" Version="1.0.0-beta3" />
     <PackageReference Include="Microsoft.Graph" Version="1.8.1" />

@@ -16,12 +16,18 @@ using GG.FA.Common.Utilities;
 
 namespace GG.FA.CreateO365User
 {
-    /// <summary>
-    /// 
-    /// </summary>
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
+    /// <summary>   A 365 new user orchestration. </summary>
+    ///
+    /// <remarks>   Sebastian Schütze, 07/04/2018. </remarks>
+    ///
     /// <seealso cref="https://github.com/microsoftgraph/uwp-csharp-snippets-sample/blob/master/Microsoft-Graph-Snippets-SDK/Groups/GroupSnippets.cs"/>
     /// <seealso cref="https://msdn.microsoft.com/en-us/library/azure/ad/graph/api/users-operations#CreateUser"/>
     /// <seealso cref="https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/samples/GraphExtensionSamples/TokenExamples.cs"/>
+    /// <seealso cref="https://login.microsoftonline.com/common/adminconsent?client_id=***REMOVED***&state=12345&redirect_uri=https://***REMOVED***.azurewebsites.net/.auth/login/aad/callback"/>
+    /// <seealso cref="https://resources.azure.com"/>
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
+
     public static class O365NewUserOrchestration
     {
         [FunctionName("O365NewUserOrchestration")]
@@ -55,11 +61,15 @@ namespace GG.FA.CreateO365User
             {
                 var user = GraphService.GetAdUserObjectFromUserListItem(currUserItem);
 
-                return "stopped here";
-
                 var userId = await graphService.CreateUserAsync(user);
 
                 user = await graphService.AssignE2LicenseToUserById(userId);
+
+                //security group for 'Beiräte'
+                var securityGroup = "d5a50ddc-739e-46ac-97ee-9569872ea644";
+                //security group for 'Werteakademie member'
+                //var securityGroup = "03f2689e-3879-413b-ab9e-002d16b72641"
+                await graphService.AddUserToGroupAsync(userId, securityGroup);
             }
             
            

@@ -53,7 +53,7 @@ namespace GG.FA.CreateO365User.Tests
                 var onlyOneTypeUser = users.Count(u =>
                 {
                     var fields = u.Fields.AdditionalData;
-                    return fields.ContainsKey("Testbenutzer") && (bool) fields["Testbenutzer"] == testUserOnly || fields.ContainsKey("Testbenutzer");
+                    return fields.ContainsKey("Testbenutzer") && (bool) fields["Testbenutzer"] != testUserOnly || !fields.ContainsKey("Testbenutzer");
                 }) == 0;
 
                 Assert.AreEqual(testUserOnly, onlyOneTypeUser);
