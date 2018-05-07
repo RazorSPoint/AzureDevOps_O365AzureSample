@@ -1,0 +1,33 @@
+﻿<?xml version="1.0"?>
+<pnp:Provisioning xmlns:pnp="http://schemas.dev.office.com/PnP/2017/05/ProvisioningSchema">
+  <pnp:Preferences Generator="OfficeDevPnP.Core, Version=2.18.1709.0, Culture=neutral, PublicKeyToken=3751622786b357c2" />
+  <pnp:Templates ID="CONTAINER-TEMPLATE-2F32E41E8B59431C9D43B841067D8076">
+    <pnp:ProvisioningTemplate ID="TEMPLATE-2F32E41E8B59431C9D43B841067D8076" Version="1" BaseSiteTemplate="STS#1" Scope="Web">
+      <pnp:Lists>
+        <pnp:ListInstance Title="WkBereich" Description="" DocumentTemplate="" OnQuickLaunch="true" TemplateType="100" Url="Lists/WkBereich" MinorVersionLimit="0" MaxVersionLimit="0" DraftVersionVisibility="0" TemplateFeatureID="00bfea71-de22-43b2-a848-c05709900100" ContentTypesEnabled="true" EnableAttachments="false" EnableFolderCreation="false" NoCrawl="true" DefaultDisplayFormUrl="{site}/Lists/WkBereich/DispForm.aspx" DefaultEditFormUrl="{site}/Lists/WkBereich/EditForm.aspx" DefaultNewFormUrl="{site}/Lists/WkBereich/NewForm.aspx" ImageUrl="/_layouts/15/images/itgen.png?rev=44" ValidationFormula="" ValidationMessage="">
+          <pnp:ContentTypeBindings>
+            <pnp:ContentTypeBinding ContentTypeID="0x0100D7C6D078A2C5F041A01372F8678C2B35" Default="true" />
+            <pnp:ContentTypeBinding ContentTypeID="0x0120" Remove="true"/>
+          </pnp:ContentTypeBindings>
+          <pnp:Views>
+            <View Name="{B2B1D89C-3F71-4E04-978F-747C32C138AE}" DefaultView="TRUE" MobileView="TRUE" MobileDefaultView="TRUE" Type="HTML" DisplayName="Alle Elemente" Url="/sites/useradmin1/Lists/WkBereich/AllItems.aspx" Level="1" BaseViewID="1" ContentTypeID="0x" ImageUrl="/_layouts/15/images/generic.png?rev=44">
+              <Query>
+                <OrderBy>
+                  <FieldRef Name="ID" />
+                </OrderBy>
+              </Query>
+              <ViewFields>
+                <FieldRef Name="LinkTitle" />
+              </ViewFields>
+              <RowLimit Paged="TRUE">30</RowLimit>
+              <JSLink>clienttemplates.js</JSLink>
+            </View>
+          </pnp:Views>
+          <pnp:FieldRefs>
+            <pnp:FieldRef ID="608407be-fe61-438a-af7f-ee96478c2390" Name="Sicherheitsgruppe" DisplayName="Sicherheitsgruppe" />
+          </pnp:FieldRefs>        
+        </pnp:ListInstance>
+      </pnp:Lists>
+    </pnp:ProvisioningTemplate>
+  </pnp:Templates>
+</pnp:Provisioning>

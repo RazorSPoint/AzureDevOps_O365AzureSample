@@ -1,0 +1,145 @@
+<?xml version="1.0"?>
+<pnp:Provisioning xmlns:pnp="http://schemas.dev.office.com/PnP/2017/05/ProvisioningSchema">
+  <pnp:Preferences Generator="OfficeDevPnP.Core, Version=2.18.1709.0, Culture=neutral, PublicKeyToken=3751622786b357c2" />
+  <pnp:Templates ID="CONTAINER-TEMPLATE-DF12946C074B4863BFE9A11F860999EC">
+    <pnp:ProvisioningTemplate ID="TEMPLATE-DF12946C074B4863BFE9A11F860999EC" Version="1" BaseSiteTemplate="STS#0" Scope="RootSite">
+      <pnp:SiteFields>
+        <Field Type="Choice" DisplayName="Segment" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" Format="Dropdown" FillInChoice="FALSE" Group="UserAdministration" ID="{b6488c19-bf84-4155-b8a5-9af751be1e96}" SourceID="{62bca9b6-085b-433f-92f3-e4cf9c86333f}" StaticName="Segment" Name="Segment">
+          <Default>Justiz</Default>
+          <CHOICES>
+            <CHOICE>Justiz</CHOICE>
+            <CHOICE>Kultur</CHOICE>
+            <CHOICE>Medien</CHOICE>
+            <CHOICE>Wirtschaft</CHOICE>
+            <CHOICE>Wissenschaft</CHOICE>
+            <CHOICE>Politik</CHOICE>
+          </CHOICES>
+        </Field>
+        <Field Type="Choice" DisplayName="AccountStatus" Required="TRUE" EnforceUniqueValues="FALSE" Indexed="FALSE" Format="Dropdown" FillInChoice="FALSE" Group="UserAdministration" ID="{82259530-8bd0-459e-a4a0-18a7cbb60f61}" SourceID="{62bca9b6-085b-433f-92f3-e4cf9c86333f}" StaticName="AccountStatus" Name="AccountStatus">
+          <Default>nicht angelegt</Default>
+          <CHOICES>
+            <CHOICE>nicht angelegt</CHOICE>
+            <CHOICE>angelegt</CHOICE>
+            <CHOICE>nicht anlegen</CHOICE>
+          </CHOICES>
+        </Field>
+        <Field Type="Text" DisplayName="EMail" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" MaxLength="255" Group="UserAdministration" ID="{6012b831-9123-411b-9600-4ac4467e4637}" SourceID="{62bca9b6-085b-433f-92f3-e4cf9c86333f}" StaticName="EMail1" Name="EMail1">
+        </Field>
+        <Field Type="Boolean" DisplayName="WeiterleitungAktiv" EnforceUniqueValues="FALSE" Indexed="FALSE" Group="UserAdministration" ID="{b3dcbb5d-0ebb-4c9c-bedd-edba5aa06bd2}" SourceID="{62bca9b6-085b-433f-92f3-e4cf9c86333f}" StaticName="WeiterleitungAktiv" Name="WeiterleitungAktiv">
+          <Default>0</Default>
+        </Field>
+        <Field Type="Text" DisplayName="Mobiltelefon" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" MaxLength="255" Group="UserAdministration" ID="{34d08863-b870-4bc0-aadd-dc491b7c7b4b}" SourceID="{62bca9b6-085b-433f-92f3-e4cf9c86333f}" StaticName="Mobiltelefon" Name="Mobiltelefon">
+        </Field>
+        <Field Type="Choice" DisplayName="Jahrgang" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" Format="Dropdown" FillInChoice="FALSE" Group="UserAdministration" ID="{93b69178-a0ab-4b03-9426-4ba0a994bb6c}" SourceID="{62bca9b6-085b-433f-92f3-e4cf9c86333f}" StaticName="Jahrgang" Name="Jahrgang">
+          <CHOICES>
+            <CHOICE>2011</CHOICE>
+            <CHOICE>2012</CHOICE>
+            <CHOICE>2013</CHOICE>
+            <CHOICE>2014</CHOICE>
+            <CHOICE>2015</CHOICE>
+            <CHOICE>2016</CHOICE>
+            <CHOICE>2017</CHOICE>
+            <CHOICE>2018</CHOICE>
+            <CHOICE>2019</CHOICE>
+            <CHOICE>2020</CHOICE>
+            <CHOICE>2021</CHOICE>
+            <CHOICE>2022</CHOICE>
+            <CHOICE>2023</CHOICE>
+            <CHOICE>2024</CHOICE>
+            <CHOICE>2025</CHOICE>
+            <CHOICE>2026</CHOICE>
+            <CHOICE>2027</CHOICE>
+            <CHOICE>2028</CHOICE>
+            <CHOICE>2029</CHOICE>
+            <CHOICE>2030</CHOICE>
+            <CHOICE>2031</CHOICE>
+            <CHOICE>2032</CHOICE>
+            <CHOICE>2033</CHOICE>
+            <CHOICE>2034</CHOICE>
+            <CHOICE>2035</CHOICE>
+            <CHOICE>2036</CHOICE>
+            <CHOICE>2037</CHOICE>
+          </CHOICES>
+        </Field>
+        <Field Type="Choice" DisplayName="Abteilung1" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" Format="Dropdown" FillInChoice="FALSE" Group="UserAdministration" ID="{68fa0382-8ae6-4556-8f31-6cd069b0bb74}" SourceID="{62bca9b6-085b-433f-92f3-e4cf9c86333f}" StaticName="Abteilung1" Name="Abteilung1">
+          <CHOICES>
+            <CHOICE>dt-biografien.gut-goedelitz.de</CHOICE>
+            <CHOICE>gut-goedelitz.de</CHOICE>
+            <CHOICE>hsm.gut-goedelitz.de</CHOICE>
+            <CHOICE>***REMOVED***</CHOICE>
+          </CHOICES>
+        </Field>
+        <Field Type="Choice" DisplayName="Bundesland" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" Format="Dropdown" FillInChoice="FALSE" Group="UserAdministration" ID="{e87727af-6459-4304-bbc0-c16e2e4c3780}" SourceID="{62bca9b6-085b-433f-92f3-e4cf9c86333f}" StaticName="Bundesland" Name="Bundesland">
+          <CHOICES>
+            <CHOICE>Baden-Württemberg</CHOICE>
+            <CHOICE>Bayern</CHOICE>
+            <CHOICE>Berlin</CHOICE>
+            <CHOICE>Brandenburg</CHOICE>
+            <CHOICE>Bremen</CHOICE>
+            <CHOICE>Hamburg</CHOICE>
+            <CHOICE>Hessen</CHOICE>
+            <CHOICE>Mecklenburg-Vorpommern</CHOICE>
+            <CHOICE>Niedersachsen</CHOICE>
+            <CHOICE>Nordrhein-Westfalen</CHOICE>
+            <CHOICE>Rheinland-Pfalz</CHOICE>
+            <CHOICE>Saarland</CHOICE>
+            <CHOICE>Sachsen</CHOICE>
+            <CHOICE>Sachsen-Anhalt</CHOICE>
+            <CHOICE>Schleswig-Holstein</CHOICE>
+            <CHOICE>Thüringen</CHOICE>
+          </CHOICES>
+        </Field>
+        <Field Type="Text" DisplayName="Festnetz" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" MaxLength="255" Group="UserAdministration" ID="{e8ae2cb5-bac8-4309-902a-1020f01e4b3b}" SourceID="{62bca9b6-085b-433f-92f3-e4cf9c86333f}" StaticName="Festnetz" Name="Festnetz">
+        </Field>
+        <Field Type="MultiChoice" DisplayName="Sicherheitsgruppe" Description="Zu welchen Sicherheitsgruppen die Bereichkategorie gehört" Required="TRUE" EnforceUniqueValues="FALSE" Indexed="FALSE" FillInChoice="FALSE" Group="UserAdministration" ID="{608407be-fe61-438a-af7f-ee96478c2390}" SourceID="{62bca9b6-085b-433f-92f3-e4cf9c86333f}" StaticName="Sicherheitsgruppe" Name="Sicherheitsgruppe">
+          <CHOICES>
+            <CHOICE>Alle Beiräte | WerteAkademie</CHOICE>
+            <CHOICE>Alle Beteiligten | WerteAkademie</CHOICE>
+            <CHOICE>Mitglieder | WerteAkademie</CHOICE>
+            <CHOICE>Jahrgang X | WerteAkademie</CHOICE>
+          </CHOICES>
+        </Field>
+        <Field Type="Boolean" DisplayName="Testbenutzer" EnforceUniqueValues="FALSE" Indexed="FALSE" Group="UserAdministration" ID="{e13325d6-e023-434a-bb74-e853e0de2bb2}" SourceID="{62bca9b6-085b-433f-92f3-e4cf9c86333f}" StaticName="Testbenutzer" Name="Testbenutzer">
+          <Default>1</Default>
+        </Field>
+        <Field Type="Lookup" DisplayName="WkBereich" Required="FALSE" EnforceUniqueValues="FALSE" List="{{listid:WkBereich}}" WebId="62bca9b6-085b-433f-92f3-e4cf9c86333f" ShowField="Title" UnlimitedLengthInDocumentLibrary="FALSE" Group="UserAdministration" ID="{a2a01bdc-e4d9-4edd-a245-91d0e4361bde}" SourceID="{62bca9b6-085b-433f-92f3-e4cf9c86333f}" StaticName="WkBereich" Name="WkBereich" />
+        <Field Type="Text" DisplayName="Vorname1" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" MaxLength="255" Group="UserAdministration" ID="{bddc70dd-7b06-4a23-ad74-c3c435fc9258}" SourceID="{62bca9b6-085b-433f-92f3-e4cf9c86333f}" StaticName="Vorname1" Name="Vorname1">
+        </Field>
+        <Field Type="Text" DisplayName="Ort1" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" MaxLength="255" Group="UserAdministration" ID="{629246ef-fca2-4d54-88f8-0990a8d69655}" SourceID="{62bca9b6-085b-433f-92f3-e4cf9c86333f}" StaticName="Ort1" Name="Ort1">
+        </Field>
+        <Field Type="Text" DisplayName="Nachname" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" MaxLength="255" Group="UserAdministration" ID="{8acb3af7-5c7e-4ee2-81d7-ac06f6eace2d}" SourceID="{62bca9b6-085b-433f-92f3-e4cf9c86333f}" StaticName="Nachname" Name="Nachname">
+        </Field>
+      </pnp:SiteFields>
+      <pnp:ContentTypes>
+        <pnp:ContentType ID="0x0100841120D4EC47564B88B5E80D8E844A80" Name="WkBenutzer" Description="WK Benutzer für O365" Group="UserAdministration" NewFormUrl="" EditFormUrl="" DisplayFormUrl="">
+          <pnp:FieldRefs>
+            <pnp:FieldRef ID="c042a256-787d-4a6f-8a8a-cf6ab767f12d" Name="ContentType" />
+            <pnp:FieldRef ID="fa564e0f-0c70-4ab9-b863-0177e6ddd247" Name="Title" Required="true" />
+            <pnp:FieldRef ID="68fa0382-8ae6-4556-8f31-6cd069b0bb74" Name="Abteilung1" />
+            <pnp:FieldRef ID="82259530-8bd0-459e-a4a0-18a7cbb60f61" Name="AccountStatus" Required="true" />
+            <pnp:FieldRef ID="ab065451-14d6-485a-88c3-414c908d50d3" Name="CategoryDescription" />
+            <pnp:FieldRef ID="e87727af-6459-4304-bbc0-c16e2e4c3780" Name="Bundesland" />
+            <pnp:FieldRef ID="6012b831-9123-411b-9600-4ac4467e4637" Name="EMail1" />
+            <pnp:FieldRef ID="e8ae2cb5-bac8-4309-902a-1020f01e4b3b" Name="Festnetz" />
+            <pnp:FieldRef ID="93b69178-a0ab-4b03-9426-4ba0a994bb6c" Name="Jahrgang" />
+            <pnp:FieldRef ID="34d08863-b870-4bc0-aadd-dc491b7c7b4b" Name="Mobiltelefon" />
+            <pnp:FieldRef ID="8acb3af7-5c7e-4ee2-81d7-ac06f6eace2d" Name="Nachname" />
+            <pnp:FieldRef ID="629246ef-fca2-4d54-88f8-0990a8d69655" Name="Ort1" />
+            <pnp:FieldRef ID="b6488c19-bf84-4155-b8a5-9af751be1e96" Name="Segment" />
+            <pnp:FieldRef ID="e13325d6-e023-434a-bb74-e853e0de2bb2" Name="Testbenutzer" />
+            <pnp:FieldRef ID="bddc70dd-7b06-4a23-ad74-c3c435fc9258" Name="Vorname1" />
+            <pnp:FieldRef ID="b3dcbb5d-0ebb-4c9c-bedd-edba5aa06bd2" Name="WeiterleitungAktiv" />
+            <pnp:FieldRef ID="a2a01bdc-e4d9-4edd-a245-91d0e4361bde" Name="WkBereich" />
+          </pnp:FieldRefs>
+        </pnp:ContentType>
+        <pnp:ContentType ID="0x0100D7C6D078A2C5F041A01372F8678C2B35" Name="WkBereich" Description="WK Bereich mit den entsprechenden Gruppen O365, die verwendet werden sollen" Group="UserAdministration" NewFormUrl="" EditFormUrl="" DisplayFormUrl="">
+          <pnp:FieldRefs>
+            <pnp:FieldRef ID="c042a256-787d-4a6f-8a8a-cf6ab767f12d" Name="ContentType" />
+            <pnp:FieldRef ID="fa564e0f-0c70-4ab9-b863-0177e6ddd247" Name="Title" Hidden="true" />
+            <pnp:FieldRef ID="608407be-fe61-438a-af7f-ee96478c2390" Name="Sicherheitsgruppe" Required="true" />
+          </pnp:FieldRefs>
+        </pnp:ContentType>
+      </pnp:ContentTypes>
+    </pnp:ProvisioningTemplate>
+  </pnp:Templates>
+</pnp:Provisioning>

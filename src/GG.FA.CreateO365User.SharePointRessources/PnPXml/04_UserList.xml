@@ -1,0 +1,47 @@
+﻿<?xml version="1.0"?>
+<pnp:Provisioning xmlns:pnp="http://schemas.dev.office.com/PnP/2017/05/ProvisioningSchema">
+  <pnp:Preferences Generator="OfficeDevPnP.Core, Version=2.18.1709.0, Culture=neutral, PublicKeyToken=3751622786b357c2" />
+  <pnp:Templates ID="CONTAINER-TEMPLATE-2F32E41E8B59431C9D43B841067D8076">
+    <pnp:ProvisioningTemplate ID="TEMPLATE-2F32E41E8B59431C9D43B841067D8076" Version="1" BaseSiteTemplate="STS#1" Scope="Web">
+      <pnp:Lists>
+      <pnp:ListInstance Title="User" Description="" DocumentTemplate="" OnQuickLaunch="true" TemplateType="100" Url="Lists/User" MinorVersionLimit="0" MaxVersionLimit="0" DraftVersionVisibility="0" TemplateFeatureID="00bfea71-de22-43b2-a848-c05709900100" ContentTypesEnabled="true" EnableAttachments="false" EnableFolderCreation="false" NoCrawl="true" DefaultDisplayFormUrl="{site}/Lists/User/DispForm.aspx" DefaultEditFormUrl="{site}/Lists/User/EditForm.aspx" DefaultNewFormUrl="{site}/Lists/User/NewForm.aspx" ImageUrl="/_layouts/15/images/itgen.png?rev=44" ValidationFormula="" ValidationMessage="">
+          <pnp:ContentTypeBindings>
+            <pnp:ContentTypeBinding ContentTypeID="0x0100841120D4EC47564B88B5E80D8E844A80" Default="true" />
+            <pnp:ContentTypeBinding ContentTypeID="0x0120" Remove="true" />
+          </pnp:ContentTypeBindings>
+          <pnp:Views>
+            <View Name="{16F9E232-12AC-46A0-9FEF-8B70DFB19F0C}" DefaultView="TRUE" MobileView="TRUE" MobileDefaultView="TRUE" Type="HTML" DisplayName="Alle Elemente" Url="/sites/useradmin1/Lists/User/AllItems.aspx" Level="1" BaseViewID="1" ContentTypeID="0x" ImageUrl="/_layouts/15/images/generic.png?rev=44">
+              <Query>
+                <OrderBy>
+                  <FieldRef Name="ID" />
+                </OrderBy>
+              </Query>
+              <ViewFields>
+                <FieldRef Name="LinkTitle" />
+              </ViewFields>
+              <RowLimit Paged="TRUE">30</RowLimit>
+              <JSLink>clienttemplates.js</JSLink>
+            </View>
+          </pnp:Views>
+          <pnp:FieldRefs>
+            <pnp:FieldRef ID="68fa0382-8ae6-4556-8f31-6cd069b0bb74" Name="Abteilung1" DisplayName="Abteilung1" />
+            <pnp:FieldRef ID="82259530-8bd0-459e-a4a0-18a7cbb60f61" Name="AccountStatus" DisplayName="AccountStatus" />
+            <pnp:FieldRef ID="ab065451-14d6-485a-88c3-414c908d50d3" Name="CategoryDescription" DisplayName="Beschreibung" />
+            <pnp:FieldRef ID="e87727af-6459-4304-bbc0-c16e2e4c3780" Name="Bundesland" DisplayName="Bundesland" />
+            <pnp:FieldRef ID="6012b831-9123-411b-9600-4ac4467e4637" Name="EMail1" DisplayName="EMail" />
+            <pnp:FieldRef ID="e8ae2cb5-bac8-4309-902a-1020f01e4b3b" Name="Festnetz" DisplayName="Festnetz" />
+            <pnp:FieldRef ID="93b69178-a0ab-4b03-9426-4ba0a994bb6c" Name="Jahrgang" DisplayName="Jahrgang" />
+            <pnp:FieldRef ID="34d08863-b870-4bc0-aadd-dc491b7c7b4b" Name="Mobiltelefon" DisplayName="Mobiltelefon" />
+            <pnp:FieldRef ID="8acb3af7-5c7e-4ee2-81d7-ac06f6eace2d" Name="Nachname" DisplayName="Nachname" />
+            <pnp:FieldRef ID="629246ef-fca2-4d54-88f8-0990a8d69655" Name="_x004f_rt1" DisplayName="Ort1" />
+            <pnp:FieldRef ID="b6488c19-bf84-4155-b8a5-9af751be1e96" Name="Segment" DisplayName="Segment" />
+            <pnp:FieldRef ID="e13325d6-e023-434a-bb74-e853e0de2bb2" Name="Testbenutzer" DisplayName="Testbenutzer" />
+            <pnp:FieldRef ID="bddc70dd-7b06-4a23-ad74-c3c435fc9258" Name="Vorname1" DisplayName="Vorname1" />
+            <pnp:FieldRef ID="b3dcbb5d-0ebb-4c9c-bedd-edba5aa06bd2" Name="WeiterleitungAktiv" DisplayName="WeiterleitungAktiv" />
+            <pnp:FieldRef ID="a2a01bdc-e4d9-4edd-a245-91d0e4361bde" Name="WkBereich" DisplayName="WkBereich" />
+          </pnp:FieldRefs>
+        </pnp:ListInstance>     
+      </pnp:Lists>
+    </pnp:ProvisioningTemplate>
+  </pnp:Templates>
+</pnp:Provisioning>
