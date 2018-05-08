@@ -40,8 +40,7 @@
     <Compile Include="Add-SharePointRessources.tests.ps1" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="PnPXml\03_UserList.xml" />
-    <Content Include="PnPXml\02_WK-BereichList.xml" />
+    <Content Include="PnPXml\02_ListsFieldsNContentTypes.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Target Name="Build" />
