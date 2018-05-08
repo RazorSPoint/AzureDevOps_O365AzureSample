@@ -102,7 +102,7 @@
         <Field Type="Boolean" DisplayName="Testbenutzer" EnforceUniqueValues="FALSE" Indexed="FALSE" Group="UserAdministration" ID="{e13325d6-e023-434a-bb74-e853e0de2bb2}" StaticName="Testbenutzer" Name="Testbenutzer">
           <Default>1</Default>
         </Field>
-        <Field Type="Lookup" DisplayName="WkBereich" Required="FALSE" EnforceUniqueValues="FALSE" List="Lists/WkBereich" WebId="62bca9b6-085b-433f-92f3-e4cf9c86333f" ShowField="Title" UnlimitedLengthInDocumentLibrary="FALSE" Group="UserAdministration" ID="{a2a01bdc-e4d9-4edd-a245-91d0e4361bde}" StaticName="WkBereich" Name="WkBereich" />
+        <Field Type="Lookup" DisplayName="WkBereich" Required="FALSE" EnforceUniqueValues="FALSE" List="Lists/WkBereich" ShowField="Title" Group="UserAdministration" ID="{a2a01bdc-e4d9-4edd-a245-91d0e4361bde}" StaticName="WkBereich" Name="WkBereich" />
         <Field Type="Text" DisplayName="Vorname1" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" MaxLength="255" Group="UserAdministration" ID="{bddc70dd-7b06-4a23-ad74-c3c435fc9258}" StaticName="Vorname1" Name="Vorname1">
         </Field>
         <Field Type="Text" DisplayName="Ort1" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" MaxLength="255" Group="UserAdministration" ID="{629246ef-fca2-4d54-88f8-0990a8d69655}" StaticName="Ort1" Name="Ort1">
