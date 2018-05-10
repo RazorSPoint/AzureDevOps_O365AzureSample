@@ -87,7 +87,7 @@
           </CHOICES>
         </Field>
         <Field Type="Text" DisplayName="Festnetz" MaxLength="255" Group="UserAdministration" ID="{e8ae2cb5-bac8-4309-902a-1020f01e4b3b}" StaticName="Festnetz" Name="Festnetz" />
-        <Field Type="MultiChoice" DisplayName="Sicherheitsgruppe" Description="Zu welchen Sicherheitsgruppen die Bereichkategorie gehört" Required="TRUE" Indexed="FALSE" FillInChoice="FALSE" Group="UserAdministration" ID="{608407be-fe61-438a-af7f-ee96478c2390}" StaticName="Sicherheitsgruppe" Name="Sicherheitsgruppe">
+        <Field Type="MultiChoice" DisplayName="Sicherheitsgruppe" Description="Zu welchen Sicherheitsgruppen die Bereichkategorie gehört" Required="TRUE" FillInChoice="FALSE" Group="UserAdministration" ID="{608407be-fe61-438a-af7f-ee96478c2390}" StaticName="Sicherheitsgruppe" Name="Sicherheitsgruppe">
           <CHOICES>
             <CHOICE>Alle Beiräte | WerteAkademie</CHOICE>
             <CHOICE>Alle Beteiligten | WerteAkademie</CHOICE>

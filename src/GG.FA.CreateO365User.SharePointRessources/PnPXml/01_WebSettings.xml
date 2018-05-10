@@ -3,7 +3,7 @@
   <pnp:Preferences Generator="OfficeDevPnP.Core, Version=2.18.1709.0, Culture=neutral, PublicKeyToken=3751622786b357c2" />
   <pnp:Templates ID="CONTAINER-TEMPLATE-CE97DA40966E445087F3E67032B06CC6">
     <pnp:ProvisioningTemplate ID="TEMPLATE-CE97DA40966E445087F3E67032B06CC6" Version="1">
-      <pnp:WebSettings WelcomePage="" SiteLogo="/sites/gut-goedelitz/SiteAssets/quadratisches_Logo_64x64_Dachlogo_GutGoedelitz.jpg" />
+      <pnp:WebSettings SiteLogo="/sites/gut-goedelitz/SiteAssets/quadratisches_Logo_64x64_Dachlogo_GutGoedelitz.jpg" />
     </pnp:ProvisioningTemplate>
   </pnp:Templates>
 </pnp:Provisioning>
