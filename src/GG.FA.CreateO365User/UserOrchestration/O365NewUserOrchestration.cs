@@ -44,7 +44,8 @@ namespace GG.FA.CreateO365User
                 Resource = "https://graph.microsoft.com"
             )]
             string graphToken,
-            TraceWriter log)
+            TraceWriter log,
+	        ExecutionContext context)
         {
 
             var azureFunctionsLogger = new AzureFunctionLogger(log);
@@ -57,21 +58,38 @@ namespace GG.FA.CreateO365User
 
             var spUser = await graphService.GetUserFromSpUserListAsync(siteId, listId, true);
 
-            foreach (var currUserItem in spUser)
-            {
-                var user = GraphService.GetAdUserObjectFromUserListItem(currUserItem);
+	        var emailService = new EmailService(graphService);
 
-                var userId = await graphService.CreateUserAsync(user);
+	        var emailString = "sebastian.schuetze@***REMOVED***";
+	        var displayName = "Sebastian Schütze";
+	        var toMail = new[] { emailString + ";Sebastian Schütze" };
+	        var body = emailService.GetMailTemplateByFile($@"{context.FunctionDirectory}\..\Templates\WK_EmailTemplate.html")
+		        .Replace("#GGEmail#", emailString)
+		        .Replace("#GGPassword#", "MyPassword")
+		        .Replace("#GGDisplayName#", displayName);
 
-                user = await graphService.AssignE2LicenseToUserById(userId);
+	        var subject = "Test Subject";
 
-                //security group for 'Beiräte'
-                var securityGroup = "d5a50ddc-739e-46ac-97ee-9569872ea644";
-                //security group for 'Werteakademie member'
-                //var securityGroup = "03f2689e-3879-413b-ab9e-002d16b72641"
-                await graphService.AddUserToGroupAsync(userId, securityGroup);
-            }
+	        emailService.SendMailAsync(emailString, toMail, toMail, emailString, subject, body);
+
+
+			//foreach (var currUserItem in spUser)
+   //         {
+   //             var user = GraphService.GetAdUserObjectFromUserListItem(currUserItem);
+
+   //             var userId = await graphService.CreateUserAsync(user);
+
+   //             user = await graphService.AssignE2LicenseToUserById(userId);
+
+   //             //security group for 'Beiräte'
+   //             var securityGroup = "d5a50ddc-739e-46ac-97ee-9569872ea644";
+   //             //security group for 'Werteakademie member'
+   //             //var securityGroup = "03f2689e-3879-413b-ab9e-002d16b72641"
+   //             await graphService.AddUserToGroupAsync(userId, securityGroup);
+				
+			//}
             
+
            
 
             return "true!";

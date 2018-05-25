@@ -12,12 +12,26 @@
   </ItemGroup>
   <ItemGroup>
     <None Remove=".gitignore" />
+    <None Remove="Templates\hookMsgUserCreated.json" />
+    <None Remove="Templates\hookMsgUserDeleted.json" />
+    <None Remove="Templates\WK_EmailTemplate.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Templates\hookMsgUserCreated.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\hookMsgUserDeleted.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\WK_EmailTemplate.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.WebJobs.Extensions.AuthTokens" Version="1.0.0-beta3" />
     <PackageReference Include="Microsoft.Azure.WebJobs.Extensions.MicrosoftGraph" Version="1.0.0-beta3" />
-    <PackageReference Include="Microsoft.Graph" Version="1.8.1" />
-    <PackageReference Include="Microsoft.NET.Sdk.Functions" Version="1.0.12" />
+    <PackageReference Include="Microsoft.Graph" Version="1.9.0" />
+    <PackageReference Include="Microsoft.NET.Sdk.Functions" Version="1.0.13" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GG.FA.Common\GG.FA.Common.csproj" />

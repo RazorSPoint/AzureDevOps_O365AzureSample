@@ -25,52 +25,28 @@ namespace GG.FA.CreateO365User.SendEmail
                 Resource = "https://graph.microsoft.com"
             )]
             string graphToken,
-            TraceWriter log)
+            TraceWriter log, 
+            ExecutionContext context)
         {
 
             var azureFunctionsLogger = new AzureFunctionLogger(log);
             var graphService = new GraphService(graphToken, azureFunctionsLogger);
 
-            var recipient = new Recipient()
-            {
-                EmailAddress = new EmailAddress()
-                {
-                    Address = "sebastian.schuetze@***REMOVED***",
-                    Name = "Sebastian Schütze"
-                }
-            };
+	        var emailService = new EmailService(graphService);
+			
+	        var emailString = "sebastian.schuetze@***REMOVED***";
+	        var displayName = "Sebastian Schütze";
+			var toMail = new[] { emailString + ";Sebastian Schütze" };
+	        var body = emailService.GetMailTemplateByFile($@"{context.FunctionDirectory}\Templates\WK_EmailTemplate.html")
+		        .Replace("#GGEmail#", emailString)
+				.Replace("#GGPassword#", "MyPassword")
+				.Replace("#GGDisplayName#", displayName);
 
-            var replyTo = new Recipient()
-            {
-                EmailAddress = new EmailAddress()
-                {
-                    Address = "sebastian.schuetze@***REMOVED***",
-                    Name = "IT Administration"
-                }
-            };
+	        var subject = "Test Subject";
 
-            var body = new ItemBody()
-            {
-                Content = "TestBody",
-                ContentType = BodyType.Html
-            };
-
-
-            var mail = new Message()
-            {
-                Subject = "",
-                ToRecipients = new[] {recipient},
-                CcRecipients = new[] {recipient},
-                Body = body,
-                From = recipient,
-                ReplyTo = new[] {replyTo}
-            };
-
-
-            await graphService.GraphClient.Users["sebastian.schuetze@***REMOVED***"].SendMail(mail, true)
-                .Request().PostAsync();
-         
-            return "true!";
+			emailService.SendMailAsync(emailString, toMail,toMail, emailString, subject, body);
+			
+            return "Mails was sent!";
         }
 
 

@@ -320,7 +320,9 @@ namespace GG.FA.Common.Services
 
     public interface IGraphService
     {
-        GraphServiceClient GetAuthenticatedClient(string graphToken);
+	    GraphServiceClient GraphClient { get; }
+
+		GraphServiceClient GetAuthenticatedClient(string graphToken);
 
         Task<string> CreateUserAsync(User user);
         
