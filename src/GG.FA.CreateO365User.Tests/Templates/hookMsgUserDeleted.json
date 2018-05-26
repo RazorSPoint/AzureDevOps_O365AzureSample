@@ -1,0 +1,18 @@
+{ 
+    "@type": "MessageCard",
+    "@context": "http://schema.org/extensions",
+    "summary": "#NumberUser# Benutzer wurden geloescht",
+    "title": "Es wurden #NumberUser# Benutzer auf dem Office 365 Tenant geloescht.",
+    "themeColor": "77b41f",
+    "sections": [
+        {
+            "text": "Es wurden folgende Benutzer geloescht",
+            "facts": [ ]
+        },
+        {
+            "startGroup": false,
+
+            "text": "Diese Benutzer wurden auf dem O365 geloescht. Wenn dies ein Fehler war, dann sind diese noch im Papierkorb im Benutzerbereich der O365n Adminoberflaeche wiederherstellbar."
+        }
+    ]
+}
