@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Security;
 using System.Text;
+using GG.FA.Common.Utilities;
+using GG.FA.Model;
 using Microsoft.Graph;
 
 namespace GG.FA.Common.Services
@@ -47,7 +50,7 @@ namespace GG.FA.Common.Services
 
 		    var body = new ItemBody()
 		    {
-			    Content = bodyString,
+			    Content = $@"{bodyString}",
 			    ContentType = BodyType.Html
 		    };
 
@@ -69,12 +72,43 @@ namespace GG.FA.Common.Services
 
 	    public string GetMailTemplateByFile(string filePath)
 	    {
-		    if (!System.IO.File.Exists(filePath))
+		    if (System.IO.File.Exists(filePath))
 		    {
 				return System.IO.File.ReadAllText(filePath);
 		    }
 
 			throw new FileNotFoundException("The file "+ filePath + " could not be found.");
 		}
+
+	    public string GetUserPasswordMail(string email, string displayName, string password)
+	    {
+		    var pathToTemplates = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Templates\\WK_EmailTemplate.html");
+
+			var templateString = GetMailTemplateByFile(pathToTemplates);
+
+		    templateString = templateString
+			    .Replace("#GGEmail#", email)
+			    .Replace("#GGPassword#", password)
+			    .Replace("#GGDisplayName#", displayName);
+
+			return templateString;
+	    }
+
+	    public bool SendPasswordMailAsync(WkUser user)
+	    {
+			var subject = "Der Werteakademie Account ist eingerichtet";
+
+		    var displayName = user.DisplayName;
+			var emailString = user.UserPrincipalName;
+		    var toMail = new[] { emailString + ";"+ displayName };
+		    var ccMail = new[] { "sebsatian.schuetze@***REMOVED***;Sebastian Schuetze" };
+
+			var mailBody = GetUserPasswordMail(emailString, displayName, user.PasswordProfile.Password);
+
+		    SendMailAsync(ccMail[0].Split(';')[0], toMail, ccMail, ccMail[0], subject, mailBody);
+
+			return true;
+	    }
+
     }
 }
