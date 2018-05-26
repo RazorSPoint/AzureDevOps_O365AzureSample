@@ -200,6 +200,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EmailServiceTests.cs" />
     <Compile Include="Mockup\TestLogger.cs" />
     <Compile Include="Properties\Common.cs" />
     <Compile Include="Properties\Common.Designer.cs">
@@ -213,6 +214,9 @@
     <Compile Include="GraphServiceTests.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Templates\WK_EmailTemplate.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="app.config">
       <SubType>Designer</SubType>
     </None>
@@ -221,11 +225,21 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Common.Designer.cs</LastGenOutput>
     </None>
+    <Content Include="Templates\hookMsgUserCreated.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\hookMsgUserDeleted.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GG.FA.Common\GG.FA.Common.csproj">
       <Project>{b49b9164-1a73-4473-b26c-2d6374d16723}</Project>
       <Name>GG.FA.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GG.FA.Model\GG.FA.Model.csproj">
+      <Project>{AD18A4B7-DCEF-4E56-A3F7-ED484947F165}</Project>
+      <Name>GG.FA.Model</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
