@@ -11,15 +11,15 @@ namespace GG.FA.Common.Services
 {
     public class QueueService
     {
-	    private readonly string _connectionStringName;
+	    private readonly string _connectionString;
 	    private readonly string _queueName;
 	    private readonly CloudStorageAccount _storageAccount;
 
-	    public QueueService(string connectionStringNameName, string queueName)
+	    public QueueService(string connectionString, string queueName)
 	    {
 		    _queueName = queueName;
-		    _connectionStringName = connectionStringNameName;
-		    _storageAccount = CloudStorageAccount.Parse(CloudConfigurationManager.GetSetting(_connectionStringName));
+		    _connectionString = connectionString;
+		    _storageAccount = CloudStorageAccount.Parse(_connectionString);
 	    }
 
 	    public Task CreateMessageAsync(string message)

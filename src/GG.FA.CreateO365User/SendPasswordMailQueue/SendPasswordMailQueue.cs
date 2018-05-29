@@ -36,14 +36,26 @@ namespace GG.FA.CreateO365User
 	        var userPrincipalName = decodedQueue[0];
 	        var userPassword = decodedQueue[1];
 
+			log.Info($"C# Queue trigger function processed: {userPrincipalName}");
+			log.Info($"C# Queue trigger function processed: {userPassword}");
+
 			var graphService = new GraphService(graphToken, azureFunctionsLogger);
 	        var emailService = new EmailService(graphService, Path.Combine(context.FunctionDirectory, "..", "Templates"));
 	        Task.Run(async () =>
 	        {
 		        var user = await graphService.GetUserAsync(userPrincipalName);
 		        var admin = await graphService.GetUserAsync("sebastian.schuetze@***REMOVED***");
-				
-				emailService.SendPasswordMailAsync(user, admin, userPassword);
+
+				var isExchangeDeployed = await graphService.IsServicePlanFromUserActiveAndDeployed(userPrincipalName, "EXCHANGE_S_STANDARD");
+
+				if (!isExchangeDeployed)
+				{
+					throw new Exception($"The Exchange is not yet assigned or deployed for user '{userPrincipalName}'");
+				}
+				else
+				{
+					emailService.SendPasswordMailAsync(user, admin, userPassword);
+				}		
 
 	        }).GetAwaiter().GetResult();
 
