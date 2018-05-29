@@ -34,16 +34,40 @@ namespace GG.FA.Common.Services
 
         private const string Scope = "https://graph.microsoft.com/.default";
 
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-        /// <summary>   Constructor for the graph client. Exepcts a token and a ILogger instance. </summary>
-        ///
-        /// <remarks>   Sebastian Schütze, 07/04/2018. </remarks>
-        ///
-        /// <param name="graphToken">   the token string for the graph client for authentification. </param>
-        /// <param name="log">          the logger instance that will be used in the graph client. </param>
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
+		public async Task<IUserLicenseDetailsCollectionPage> GetLicenseByUserAsync(string userPrincipalName)
+		{
+			return await GraphClient.Users[userPrincipalName].LicenseDetails.Request().GetAsync();
+		}
 
-        public GraphService(string graphToken, ILogger log)
+		public async Task<ServicePlanInfo> GetUserLicenseByPlanNameAsync(string userPrincipalName,string servicePlanName)
+		{
+			var userLicenses = await GetLicenseByUserAsync(userPrincipalName);
+
+			ServicePlanInfo servicePlanInfo = null;
+
+			foreach (var license in userLicenses)
+			{
+				servicePlanInfo = license.ServicePlans.FirstOrDefault(plan => plan.ServicePlanName.Equals(servicePlanName));
+			}
+
+			return servicePlanInfo;
+		}
+
+		public async Task<bool> IsServicePlanFromUserActiveAndDeployed(string principalUserName,string servicePlanName)
+		{
+			return (await GetUserLicenseByPlanNameAsync(principalUserName, servicePlanName)).ProvisioningStatus.Equals("Success");
+		}
+
+		////////////////////////////////////////////////////////////////////////////////////////////////////
+		/// <summary>   Constructor for the graph client. Exepcts a token and a ILogger instance. </summary>
+		///
+		/// <remarks>   Sebastian Schütze, 07/04/2018. </remarks>
+		///
+		/// <param name="graphToken">   the token string for the graph client for authentification. </param>
+		/// <param name="log">          the logger instance that will be used in the graph client. </param>
+		////////////////////////////////////////////////////////////////////////////////////////////////////
+
+		public GraphService(string graphToken, ILogger log)
         {
             _log = log;
             this.GetAuthenticatedClient(graphToken);
