@@ -121,18 +121,42 @@ namespace GG.FA.Common.Services
             return createdUserId;
         }
 
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-        /// <summary>   Adds a user to group asynchronously by 'groupId'. </summary>
-        ///
-        /// <remarks>   Sebastian Schütze, 07/04/2018. </remarks>
-        ///
-        /// <param name="userId">   Identifier for the user. </param>
-        /// <param name="groupId">  Identifier for the group. </param>
-        ///
-        /// <returns>   An asynchronous result that yields the add user to group. </returns>
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
+	    public async Task<User> GetUserAsync(string userPrincipalName)
+	    {
 
-        public async Task<bool> AddUserToGroupAsync(string userId, string groupId)
+		    var user = await GraphClient.Users[userPrincipalName].Request().GetAsync();
+
+		    return user;
+	    }
+
+	    public async Task<string> ResetUserPasswordAsync(string userPrincipalName)
+	    {
+		    var newPassword = Security.ToInsecureString(Security.GetRandomPassword(8, true, true, true, true));
+
+		    await GraphClient.Users[userPrincipalName].Request().UpdateAsync(new User()
+		    {
+			    PasswordProfile = new PasswordProfile()
+			    {
+				    Password = newPassword,
+				    ForceChangePasswordNextSignIn = true
+			    }
+		    });
+			
+			return newPassword;
+	    }
+
+		////////////////////////////////////////////////////////////////////////////////////////////////////
+		/// <summary>   Adds a user to group asynchronously by 'groupId'. </summary>
+		///
+		/// <remarks>   Sebastian Schütze, 07/04/2018. </remarks>
+		///
+		/// <param name="userId">   Identifier for the user. </param>
+		/// <param name="groupId">  Identifier for the group. </param>
+		///
+		/// <returns>   An asynchronous result that yields the add user to group. </returns>
+		////////////////////////////////////////////////////////////////////////////////////////////////////
+
+		public async Task<bool> AddUserToGroupAsync(string userId, string groupId)
         {
             var userAdded = false;
          
