@@ -18,33 +18,25 @@ namespace GG.FA.CreateO365User.Tests
 	{
 
         [TestMethod]
-        [DataRow(true)]
-        [DataRow(false)]
-        public void SendMailAsync_Successful(bool testUserOnly)
+        public void SendMailAsync_Successful()
         {
             var clientId = Properties.Common.Default.AppClientID;
             var clientSecret = Properties.Common.Default.AppClientSecret;
             var tenantId = Properties.Common.Default.TenantId;
-
-            // site: ***REMOVED***/sites/gut-goedelitz/UserAdminiatration
-            var siteId = Properties.Common.Default.SiteIdUserList;
-            // list: ***REMOVED***/sites/gut-goedelitz/UserAdminiatration/Lists/UserInventory
-            var listId = Properties.Common.Default.ListIdUserList;
 
             Task.Run(async () =>
             {
                 var graphToken = await GraphService.GetAccessTokenWithClientSecret(clientId, clientSecret, tenantId);
                 var graphService = new GraphService(graphToken, new TestLogger());
 
-	            var currUserItems = await graphService.GetUserFromSpUserListAsync(siteId, listId, true);
-				var emailService = new EmailService(graphService);
-				
-	            foreach (var currUserItem in currUserItems)
-	            {
-		            var user = GraphService.GetAdUserObjectFromUserListItem(currUserItem);
+	            var emailService = new EmailService(graphService, Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Templates"));
 
-		            emailService.SendPasswordMailAsync((WkUser)user);
-	            }
+	            var user = await graphService.GetUserAsync("sebastian.schuetze@***REMOVED***");
+	            var admin = await graphService.GetUserAsync("sebastian.schuetze@***REMOVED***");
+
+				var password = await graphService.ResetUserPasswordAsync("***REMOVED***");
+
+	            emailService.SendPasswordMailAsync(user, admin, password);
 
 			}).GetAwaiter().GetResult();
         }

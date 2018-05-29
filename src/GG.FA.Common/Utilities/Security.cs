@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Security;
+using System.Security.Cryptography;
 using System.Xml.Serialization;
 
 namespace GG.FA.Common.Utilities
 {
     public class Security
     {
-        private static readonly byte[] Entropy = System.Text.Encoding.Unicode.GetBytes("SomeSaltHereIsNotAPassword");
+        private static readonly byte[] Entropy = System.Text.Encoding.Unicode.GetBytes("98794ce1-64d8-4260-b81a-c0695d41e08e");
 
         /// <summary>
         /// Encrypts the string with an entropy (salt). Only user that has encrypted the string can decrypt it.
@@ -18,10 +19,9 @@ namespace GG.FA.Common.Utilities
         /// <see cref="https://weblogs.asp.net/jongalloway/encrypting-passwords-in-a-net-app-config-file"/>
         public static string EncryptString(System.Security.SecureString input)
         {
-            byte[] encryptedData = System.Security.Cryptography.ProtectedData.Protect(
+            byte[] encryptedData = ProtectedData.Protect(
                 System.Text.Encoding.Unicode.GetBytes(ToInsecureString(input)),
-                Entropy,
-                System.Security.Cryptography.DataProtectionScope.CurrentUser);
+                Entropy,DataProtectionScope.LocalMachine);
             return Convert.ToBase64String(encryptedData);
         }
 
@@ -35,10 +35,10 @@ namespace GG.FA.Common.Utilities
         {
             try
             {
-                byte[] decryptedData = System.Security.Cryptography.ProtectedData.Unprotect(
+                byte[] decryptedData = ProtectedData.Unprotect(
                     Convert.FromBase64String(encryptedData),
                     Entropy,
-                    System.Security.Cryptography.DataProtectionScope.CurrentUser);
+                    DataProtectionScope.LocalMachine);
                 return ToSecureString(System.Text.Encoding.Unicode.GetString(decryptedData));
             }
             catch

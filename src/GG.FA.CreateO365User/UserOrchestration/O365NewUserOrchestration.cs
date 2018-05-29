@@ -60,26 +60,24 @@ namespace GG.FA.CreateO365User
 
             var currUserItems = await graphService.GetUserFromSpUserListAsync(siteId, listId, true);
 
-	        var emailService = new EmailService(graphService);
 
-	      
+	        var sendPasswordQueue = new QueueService("QueueConnectionString", "sendpasswordqueue-items");
 			
 			foreach (var currUserItem in currUserItems)
 			{
 				var user = GraphService.GetAdUserObjectFromUserListItem(currUserItem);
 				
-				var userId = await graphService.CreateUserAsync(user);
-
-				var createdUser = await graphService.AssignE2LicenseToUserById(userId);
-
-				emailService.SendPasswordMailAsync((WkUser)user);
-
+				//var userId = await graphService.CreateUserAsync(user);
+				
+				//var createdUser = await graphService.AssignE2LicenseToUserById(userId);
+				
 				//security group for 'Beiräte'
 				var securityGroup = "d5a50ddc-739e-46ac-97ee-9569872ea644";
 				//security group for 'Werteakademie member'
 				//var securityGroup = "03f2689e-3879-413b-ab9e-002d16b72641"
-				await graphService.AddUserToGroupAsync(userId, securityGroup);
-
+				//await graphService.AddUserToGroupAsync(userId, securityGroup);
+				
+				await sendPasswordQueue.CreateEncryptedMessageAsync($"{user.UserPrincipalName}|{user.PasswordProfile.Password}");
 			}
 			
 
