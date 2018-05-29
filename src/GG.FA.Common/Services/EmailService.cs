@@ -13,10 +13,12 @@ namespace GG.FA.Common.Services
     public class EmailService
     {
 	    private readonly IGraphService _graphService;
+	    private readonly string _templatePath;
 
-	    public EmailService(IGraphService graphService)
+	    public EmailService(IGraphService graphService,string templatePath)
 	    {
 		    _graphService = graphService;
+		    _templatePath = templatePath;
 	    }
 
 	    public async void SendMailAsync(string sendByUserEmail, string[] toRecipientMails,string[] ccRecipientMails, string replyToMail, string subject, string bodyString)
@@ -82,7 +84,7 @@ namespace GG.FA.Common.Services
 
 	    public string GetUserPasswordMail(string email, string displayName, string password)
 	    {
-		    var pathToTemplates = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Templates\\WK_EmailTemplate.html");
+		    var pathToTemplates = Path.Combine(_templatePath, "WK_EmailTemplate.html");
 
 			var templateString = GetMailTemplateByFile(pathToTemplates);
 
@@ -94,18 +96,18 @@ namespace GG.FA.Common.Services
 			return templateString;
 	    }
 
-	    public bool SendPasswordMailAsync(WkUser user)
+	    public bool SendPasswordMailAsync(User user,User admin, string password)
 	    {
 			var subject = "Der Werteakademie Account ist eingerichtet";
 
 		    var displayName = user.DisplayName;
 			var emailString = user.UserPrincipalName;
 		    var toMail = new[] { emailString + ";"+ displayName };
-		    var ccMail = new[] { "sebsatian.schuetze@***REMOVED***;Sebastian Schuetze" };
+		    var ccMail = new[] { $"{admin.UserPrincipalName};{admin.DisplayName}" };
 
-			var mailBody = GetUserPasswordMail(emailString, displayName, user.PasswordProfile.Password);
+			var mailBody = GetUserPasswordMail(emailString, displayName, password);
 
-		    SendMailAsync(ccMail[0].Split(';')[0], toMail, ccMail, ccMail[0], subject, mailBody);
+		    SendMailAsync(admin.UserPrincipalName, toMail, ccMail, ccMail[0], subject, mailBody);
 
 			return true;
 	    }
