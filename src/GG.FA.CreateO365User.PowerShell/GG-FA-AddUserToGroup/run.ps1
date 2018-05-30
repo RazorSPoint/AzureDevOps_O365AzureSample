@@ -1,14 +1,15 @@
 # POST method: $req
+
 $requestBody = Get-Content $req -Raw | ConvertFrom-Json
 $securityGroup = $requestBody.securityGroup
 $userPrincipalName = $requestBody.userPrincipalName
-$adminUser =$requestBody.AdminUser
-$adminPassword = $requestBody.Password
+$adminUser =$requestBody.adminUser
+$adminPassword = $requestBody.password
 
 
 $result = Get-Variable "EXECUTION_CONTEXT_FUNCTIONDIRECTORY"
 $funcDir = $result.Value
-. "$funcDir/../Exchange.ps1"
+. "$funcDir/../Common/Exchange.ps1"
 	
 
 
