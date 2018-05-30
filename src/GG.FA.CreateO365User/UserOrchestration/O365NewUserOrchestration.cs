@@ -52,6 +52,12 @@ namespace GG.FA.CreateO365User
 
             var azureFunctionsLogger = new AzureFunctionLogger(log);
             var graphService = new GraphService(graphToken, azureFunctionsLogger);
+	        var exchangeOnlineService = new ExchangeOnlineService(
+		        "https://gg-fa-mytestapp-powershell.azurewebsites.net/api/GG-FA-AddUserToGroup",
+		        "zB1tzh78v3HL446pjmaxAsPs5SUtlesKLXm3Fl01XQfIqT0ePh2MMg==",
+		        "sebastian.schuetze@***REMOVED***",
+		        Security.ToSecureString("***REMOVED***")
+	        );
 
             // site: ***REMOVED***/sites/gut-goedelitz/UserAdminiatration
             var siteId = "***REMOVED***,***REMOVED***,***REMOVED***";
@@ -72,12 +78,8 @@ namespace GG.FA.CreateO365User
 				
 				var createdUser = await graphService.AssignE2LicenseToUserById(userId);
 				
-				//security group for 'Beiräte'
-				var securityGroup = "d5a50ddc-739e-46ac-97ee-9569872ea644";
-				//security group for 'Werteakademie member'
-				//var securityGroup = "03f2689e-3879-413b-ab9e-002d16b72641"
-				await graphService.AddUserToGroupAsync(userId, securityGroup);
-				
+				await exchangeOnlineService.AddUserToWerteAkademieGroupAsync(userId);
+
 				await sendPasswordQueue.CreateEncryptedMessageAsync($"{user.UserPrincipalName}|{user.PasswordProfile.Password}");
 			}
 			
