@@ -1,15 +1,11 @@
 {
   "bindings": [
     {
-      "name": "req",
-      "type": "httpTrigger",
+      "name": "triggerInput",
+      "type": "queueTrigger",
       "direction": "in",
-      "authLevel": "function"
-    },
-    {
-      "name": "res",
-      "type": "http",
-      "direction": "out"
+      "queueName": "addtogroupusers-items",
+      "connection": "AzureWebJobsStorage"
     }
   ],
   "disabled": false
