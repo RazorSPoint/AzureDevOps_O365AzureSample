@@ -14,16 +14,22 @@
         "description": "The name of the function app that you wish to create."
       }
     },
-    "storageAccountType": {
+    "adAppClientId": {
       "type": "string",
-      "defaultValue": "Standard_LRS",
-      "allowedValues": [
-        "Standard_LRS",
-        "Standard_GRS",
-        "Standard_RAGRS"
-      ],
       "metadata": {
-        "description": "Storage Account type"
+        "description": "id of the registrated Azure app used for authentification."
+      }
+    },
+    "adAppClientSecret": {
+      "type": "securestring",
+      "metadata": {
+        "description": "secret of the registrated Azure app used for authentification."
+      }
+    },
+    "azureIssuerId": {
+      "type": "string",
+      "metadata": {
+        "description": "Issuer id of the tenant (also known as the tenant id in Azure)."
       }
     }
   },
@@ -31,11 +37,9 @@
     "functionAppName": "[parameters('appName')]",
     "functionAppNamePowerShell": "[parameters('appNamePowerShell')]",
     "hostingPlanName": "[parameters('appName')]",
-    "hostingPlanNamePowerShell": "[parameters('appNamePowerShell')]",
-    "storageAccountName": "[concat(uniquestring(resourceGroup().id), 'o365azfunc')]",
-    "storageAccountNamePowerShell": "[concat(uniquestring(resourceGroup().id), 'psazfunc')]",
+    "storageAccountName": "[concat('o365userstorage',uniquestring(resourceGroup().id))]",
     "storageAccountid": "[concat(resourceGroup().id,'/providers/','Microsoft.Storage/storageAccounts/', variables('storageAccountName'))]",
-    "storageAccountPowerShellid": "[concat(resourceGroup().id,'/providers/','Microsoft.Storage/storageAccounts/', variables('storageAccountNamePowerShell'))]"
+    "issuerUrl": "[concat('https://sts.windows.net/',parameters('azureIssuerId'),'/')]",
   },
   "resources": [
     {
@@ -45,17 +49,7 @@
       "location": "[resourceGroup().location]",
       "kind": "Storage",
       "sku": {
-        "name": "[parameters('storageAccountType')]"
-      }
-    },
-    {
-      "type": "Microsoft.Storage/storageAccounts",
-      "name": "[variables('storageAccountNamePowerShell')]",
-      "apiVersion": "2016-12-01",
-      "location": "[resourceGroup().location]",
-      "kind": "Storage",
-      "sku": {
-        "name": "[parameters('storageAccountType')]"
+        "name": "Standard_LRS"
       }
     },
     {
@@ -92,20 +86,34 @@
               "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2015-05-01-preview').key1)]"
             },
             {
-              "name": "WEBSITE_CONTENTAZUREFILECONNECTIONSTRING",
-              "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2015-05-01-preview').key1)]"
-            },
-            {
               "name": "WEBSITE_CONTENTSHARE",
               "value": "[toLower(variables('functionAppName'))]"
+            },
+            {
+              "name": "AzureWebJobsDisableHomepage",
+              "value": "true"
             },
             {
               "name": "FUNCTIONS_EXTENSION_VERSION",
               "value": "beta"
             },
             {
-              "name": "WEBSITE_NODE_DEFAULT_VERSION",
-              "value": "6.5.0"
+              "name": "WEBSITE_AUTH_CLIENT_ID",
+              "value": "[parameters('adAppClientId')]"
+            },
+
+            {
+              "name": "WEBSITE_AUTH_CLIENT_SECRET",
+              "value": "[parameters('adAppClientSecret')]"
+            },
+
+            {
+              "name": "WEBSITE_AUTH_OPENID_ISSUER",
+              "value": "[variables('issuerUrl')]"
+            },
+            {
+              "name": "QueueConnectionString",
+              "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2015-05-01-preview').key1)]"
             }
           ]
         }
@@ -125,9 +133,9 @@
             "tokenStoreEnabled": true,
             "allowedExternalRedirectUrls": null,
             "defaultProvider": "AzureActiveDirectory",
-            "clientId": "***REMOVED***",
-            "clientSecret": "***REMOVED***",
-            "issuer": "https://sts.windows.net/***REMOVED***/",
+            "clientId": "[parameters('adAppClientId')]",
+            "clientSecret": "[parameters('adAppClientSecret')]",
+            "issuer": "[variables('issuerUrl')]",
             "allowedAudiences": null,
             "additionalLoginParams": null,
             "isAadAutoProvisioned": false
@@ -158,10 +166,6 @@
               "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2015-05-01-preview').key1)]"
             },
             {
-              "name": "WEBSITE_CONTENTAZUREFILECONNECTIONSTRING",
-              "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2015-05-01-preview').key1)]"
-            },
-            {
               "name": "WEBSITE_CONTENTSHARE",
               "value": "[toLower(variables('functionAppNamePowerShell'))]"
             },
@@ -170,16 +174,25 @@
               "value": "~1"
             },
             {
-              "name": "WEBSITE_NODE_DEFAULT_VERSION",
-              "value": "6.5.0"
+              "name": "AzureWebJobsDisableHomepage",
+              "value": "true"
             },
             {
-              "name": "AdminUser",
-              "value": ""
+              "name": "WEBSITE_AUTH_CLIENT_ID",
+              "value": "[parameters('adAppClientId')]"
+            },
+
+            {
+              "name": "WEBSITE_AUTH_CLIENT_SECRET",
+              "value": "[parameters('adAppClientSecret')]"
             },
             {
-              "name": "Password",
-              "value": ""
+              "name": "WEBSITE_AUTH_OPENID_ISSUER",
+              "value": "[variables('issuerUrl')]"
+            },
+            {
+              "name": "QueueConnectionString",
+              "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2015-05-01-preview').key1)]"
             }
           ]
         }
