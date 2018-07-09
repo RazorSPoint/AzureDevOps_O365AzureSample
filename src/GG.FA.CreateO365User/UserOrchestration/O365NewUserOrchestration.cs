@@ -52,37 +52,36 @@ namespace GG.FA.CreateO365User
 
             var azureFunctionsLogger = new AzureFunctionLogger(log);
             var graphService = new GraphService(graphToken, azureFunctionsLogger);
-	        var exchangeOnlineService = new ExchangeOnlineService(
-		        "https://gg-fa-mytestapp-powershell.azurewebsites.net/api/GG-FA-AddUserToGroup",
-		        "zB1tzh78v3HL446pjmaxAsPs5SUtlesKLXm3Fl01XQfIqT0ePh2MMg==",
-		        "sebastian.schuetze@***REMOVED***",
-		        Security.ToSecureString("***REMOVED***")
+
+	        var currUserItems = await graphService.GetUserFromSpUserListAsync(
+		        Configs.UserAdministrationGraphSiteId, 
+		        Configs.UserAdminstrationSharePointListId, 
+		        true
+		    );
+
+	        var sendPasswordQueue = new QueueService(Configs.SendPasswordQueueConnectionString, Configs.QueueConnectionString);
+			var addUserToGroupQueue = new QueueService(Configs.AddUserToGroupQueueConnectionString, Configs.QueueConnectionString);
+
+			var exchangeOnlineService = new ExchangeOnlineService(
+		        addUserToGroupQueue,
+		        Configs.O365AdminUser,
+		        Security.ToSecureString(Configs.O365AdminPassword)
 	        );
 
-            // site: ***REMOVED***/sites/gut-goedelitz/UserAdminiatration
-            var siteId = "***REMOVED***,***REMOVED***,***REMOVED***";
-            // list: ***REMOVED***/sites/gut-goedelitz/UserAdminiatration/Lists/UserInventory
-            var listId = "***REMOVED***";
-
-            var currUserItems = await graphService.GetUserFromSpUserListAsync(siteId, listId, true);
-
-			var connectionString = System.Environment.GetEnvironmentVariable("QueueConnectionString", EnvironmentVariableTarget.Process);
-				
-			var sendPasswordQueue = new QueueService(connectionString, "sendpasswordqueue-items");
-			
 			foreach (var currUserItem in currUserItems)
 			{
 				var user = GraphService.GetAdUserObjectFromUserListItem(currUserItem);
-				
+
+				await graphService.DeleteUserByPrincipalNameAsync(user.UserPrincipalName, false);
+
 				var userId = await graphService.CreateUserAsync(user);
 				
 				var createdUser = await graphService.AssignE2LicenseToUserById(userId);
 				
 				await exchangeOnlineService.AddUserToWerteAkademieGroupAsync(userId);
-
+				await addUserToGroupQueue.CreateMessageAsync(userId);
 				await sendPasswordQueue.CreateEncryptedMessageAsync($"{user.UserPrincipalName}|{user.PasswordProfile.Password}");
 			}
-			
 
 			return "Email sent!";
         }
