@@ -145,7 +145,24 @@ namespace GG.FA.Common.Services
             return createdUserId;
         }
 
-	    public async Task<User> GetUserAsync(string userPrincipalName)
+	    public async Task DeleteUserByPrincipalNameAsync(string userPrincipalName, bool throwException=true)
+	    {
+		    if (throwException)
+		    {
+				await GraphClient.Users[userPrincipalName].Request().DeleteAsync();
+			}
+
+		    try
+		    {
+			    await GraphClient.Users[userPrincipalName].Request().DeleteAsync();
+		    }
+		    catch (Exception e)
+		    {
+			    _log.Warning(e.Message);
+		    }
+	    }
+
+		public async Task<User> GetUserAsync(string userPrincipalName)
 	    {
 
 		    var user = await GraphClient.Users[userPrincipalName].Request().GetAsync();
@@ -364,6 +381,8 @@ namespace GG.FA.Common.Services
                 UsageLocation = "DE"
             };
         }
+
+	 
     }
 
     public interface IGraphService
@@ -373,8 +392,10 @@ namespace GG.FA.Common.Services
 		GraphServiceClient GetAuthenticatedClient(string graphToken);
 
         Task<string> CreateUserAsync(User user);
-        
-        Task<bool> AddUserToGroupAsync(string userId, string groupId);
+
+	    Task DeleteUserByPrincipalNameAsync(string userPrincipalName, bool throwException);
+
+		Task<bool> AddUserToGroupAsync(string userId, string groupId);
         
         Task<IEnumerable<ListItem>> GetUserFromSpUserListAsync(string siteId, string listId,bool testuserOnly);
         
