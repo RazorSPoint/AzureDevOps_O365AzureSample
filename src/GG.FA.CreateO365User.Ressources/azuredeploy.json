@@ -94,6 +94,10 @@
         "[resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName'))]"
       ],
       "properties": {
+        "phpVersion": "",
+        "remoteDebuggingEnabled": true,
+        "remoteDebuggingVersion": "VS2017",
+        "ftpsState": "Disabled",
         "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('hostingPlanName'))]",
         "siteConfig": {
           "appSettings": [
@@ -189,6 +193,10 @@
         "[resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName'))]"
       ],
       "properties": {
+        "phpVersion": "",
+        "remoteDebuggingEnabled": true,
+        "remoteDebuggingVersion": "VS2017",
+        "ftpsState": "Disabled",
         "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('hostingPlanName'))]",
         "siteConfig": {
           "appSettings": [
@@ -222,6 +230,38 @@
             }
           ]
         }
+      }
+    },
+    {
+      "apiVersion": "2014-04-01",
+      "name": "[variables('functionAppName')]",
+      "type": "Microsoft.Insights/components",
+      "location": "[resourceGroup().location]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Web/sites/', variables('functionAppName'))]"
+      ],
+      "tags": {
+        "[concat('hidden-link:', resourceGroup().id, '/providers/Microsoft.Web/sites/', variables('functionAppName'))]": "Resource",
+        "displayName": "AppInsightsComponent"
+      },
+      "properties": {
+        "applicationId": "[variables('functionAppName')]"
+      }
+    },
+    {
+      "apiVersion": "2014-04-01",
+      "name": "[variables('functionAppNamePowerShell')]",
+      "type": "Microsoft.Insights/components",
+      "location": "[resourceGroup().location]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Web/sites/', variables('functionAppNamePowerShell'))]"
+      ],
+      "tags": {
+        "[concat('hidden-link:', resourceGroup().id, '/providers/Microsoft.Web/sites/', variables('functionAppNamePowerShell'))]": "Resource",
+        "displayName": "AppInsightsComponent"
+      },
+      "properties": {
+        "applicationId": "[variables('functionAppNamePowerShell')]"
       }
     }
   ],
