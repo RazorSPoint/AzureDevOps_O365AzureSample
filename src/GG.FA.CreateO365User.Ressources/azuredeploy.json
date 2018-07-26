@@ -153,6 +153,10 @@
             {
               "name": "AddToGroupUsersQueueName",
               "value": "[variables('addToGroupUsersQueueName')]"
+            },
+            {
+              "name": "APPINSIGHTS_INSTRUMENTATIONKEY",
+              "value": "[reference(concat('microsoft.insights/components/', [variables('functionAppName')])).InstrumentationKey]"
             }
           ]
         }
@@ -227,6 +231,10 @@
             {
               "name": "QueueConnectionString",
               "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2015-05-01-preview').key1)]"
+            },
+            {
+              "name": "APPINSIGHTS_INSTRUMENTATIONKEY",
+              "value": "[reference(concat('microsoft.insights/components/', [variables('functionAppNamePowerShell')])).InstrumentationKey]"
             }
           ]
         }
