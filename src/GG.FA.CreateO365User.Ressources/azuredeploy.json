@@ -245,9 +245,6 @@
       "name": "[variables('functionAppName')]",
       "type": "Microsoft.Insights/components",
       "location": "[resourceGroup().location]",
-      "dependsOn": [
-        "[resourceId('Microsoft.Web/sites/', variables('functionAppName'))]"
-      ],
       "tags": {
         "[concat('hidden-link:', resourceGroup().id, '/providers/Microsoft.Web/sites/', variables('functionAppName'))]": "Resource",
         "displayName": "AppInsightsComponent"
@@ -261,9 +258,6 @@
       "name": "[variables('functionAppNamePowerShell')]",
       "type": "Microsoft.Insights/components",
       "location": "[resourceGroup().location]",
-      "dependsOn": [
-        "[resourceId('Microsoft.Web/sites/', variables('functionAppNamePowerShell'))]"
-      ],
       "tags": {
         "[concat('hidden-link:', resourceGroup().id, '/providers/Microsoft.Web/sites/', variables('functionAppNamePowerShell'))]": "Resource",
         "displayName": "AppInsightsComponent"
