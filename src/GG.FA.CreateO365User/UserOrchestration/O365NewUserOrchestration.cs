@@ -59,8 +59,8 @@ namespace GG.FA.CreateO365User
 		        true
 		    );
 
-	        var sendPasswordQueue = new QueueService(Configs.SendPasswordQueueConnectionString, Configs.QueueConnectionString);
-			var addUserToGroupQueue = new QueueService(Configs.AddUserToGroupQueueConnectionString, Configs.QueueConnectionString);
+	        var sendPasswordQueue = new QueueService(Configs.QueueConnectionString, Configs.SendPasswordQueueName);
+			var addUserToGroupQueue = new QueueService(Configs.QueueConnectionString, Configs.AddToGroupUsersQueueName);
 
 			var exchangeOnlineService = new ExchangeOnlineService(
 		        addUserToGroupQueue,
@@ -78,8 +78,8 @@ namespace GG.FA.CreateO365User
 				
 				var createdUser = await graphService.AssignE2LicenseToUserById(userId);
 				
-				await exchangeOnlineService.AddUserToWerteAkademieGroupAsync(userId);
-				await addUserToGroupQueue.CreateMessageAsync(userId);
+				await exchangeOnlineService.AddUserToWerteAkademieGroupAsync(user.UserPrincipalName);
+				
 				await sendPasswordQueue.CreateEncryptedMessageAsync($"{user.UserPrincipalName}|{user.PasswordProfile.Password}");
 			}
 
