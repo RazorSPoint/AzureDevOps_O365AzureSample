@@ -55,7 +55,7 @@
     "functionAppName": "concat('GG-FA-',[parameters('suffixAppName')])",
     "functionAppNamePowerShell": "concat('GG-FA-',[parameters('suffixAppName')],-PowerShell)",
     "hostingPlanName": "concat('GG-FA-',[parameters('suffixAppName')])",
-    "storageAccountName": "[concat('o365userstorage',uniquestring(resourceGroup().id))]",
+    "storageAccountName": "[concat('o365usrstrg',uniquestring(resourceGroup().id))]",
     "storageAccountid": "[concat(resourceGroup().id,'/providers/','Microsoft.Storage/storageAccounts/', variables('storageAccountName'))]",
     "issuerUrl": "[concat('https://sts.windows.net/',parameters('azureIssuerId'),'/')]",
     "sendPasswordQueueName": "sendpasswordqueue-items",
