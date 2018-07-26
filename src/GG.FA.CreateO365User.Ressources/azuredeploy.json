@@ -224,7 +224,7 @@
         }
       }
     }
-  ]
+  ],
   "outputs": {
     "CSharpFunctionAppName": {
       "type": "string",
