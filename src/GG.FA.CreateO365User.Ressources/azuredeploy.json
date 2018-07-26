@@ -225,4 +225,14 @@
       }
     }
   ]
+  "outputs": {
+    "CSharpFunctionAppName": {
+      "type": "string",
+      "value": "[variables('functionAppName')]"
+    },
+    "PsFunctionAppName": {
+      "type": "string",
+      "value": "[variables('functionAppNamePowerShell')]"
+    }
+  }
 }
