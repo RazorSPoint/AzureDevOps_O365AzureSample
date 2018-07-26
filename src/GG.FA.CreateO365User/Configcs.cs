@@ -24,19 +24,19 @@ namespace GG.FA.CreateO365User
 		    }
 	    }
 
-	    public static string SendPasswordQueueConnectionString
+	    public static string SendPasswordQueueName
 		{
 		    get
 		    {
-			    return GetConfig("SendPasswordQueueConnectionString");
+			    return GetConfig("SendPasswordQueueName");
 		    }
 	    }
 
-	    public static string AddUserToGroupQueueConnectionString
+	    public static string AddToGroupUsersQueueName
 		{
 		    get
 		    {
-			    return GetConfig("AddUserToGroupQueueConnectionString");
+			    return GetConfig("AddToGroupUsersQueueName");
 		    }
 	    }
 
