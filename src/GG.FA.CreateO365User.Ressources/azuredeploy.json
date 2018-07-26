@@ -156,7 +156,7 @@
             },
             {
               "name": "APPINSIGHTS_INSTRUMENTATIONKEY",
-              "value": "[reference(concat('microsoft.insights/components/', [variables('functionAppName'))).InstrumentationKey]"
+              "value": "[reference(concat('microsoft.insights/components/', variables('functionAppName'))).InstrumentationKey]"
             }
           ]
         }
@@ -234,7 +234,7 @@
             },
             {
               "name": "APPINSIGHTS_INSTRUMENTATIONKEY",
-              "value": "[reference(concat('microsoft.insights/components/', [variables('functionAppNamePowerShell'))).InstrumentationKey]"
+              "value": "[reference(concat('microsoft.insights/components/', variables('functionAppNamePowerShell'))).InstrumentationKey]"
             }
           ]
         }
