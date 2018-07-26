@@ -14,28 +14,37 @@ namespace GG.FA.Common.Services
 	    private readonly string _connectionString;
 	    private readonly string _queueName;
 	    private readonly CloudStorageAccount _storageAccount;
+		private CloudQueueClient _queueClient;
+		private CloudQueue _targetQueue;
 
-	    public QueueService(string connectionString, string queueName)
+		public QueueService(string connectionString, string queueName)
 	    {
 		    _queueName = queueName;
 		    _connectionString = connectionString;
 		    _storageAccount = CloudStorageAccount.Parse(_connectionString);
-	    }
+			_queueClient = _storageAccount.CreateCloudQueueClient();
+			_targetQueue = _queueClient.GetQueueReference(_queueName);			
+		}
 
-	    public Task CreateMessageAsync(string message)
+		public Task CreateQueueIfNotExistsAsync()
+		{
+			return _targetQueue.CreateIfNotExistsAsync();
+		}
+			   
+	    public async Task CreateMessageAsync(string message)
 	    {
-		    var queueClient = _storageAccount.CreateCloudQueueClient();
-		    var targetQueue = queueClient.GetQueueReference(_queueName);
-
 		    var queueMessage = new CloudQueueMessage(message);
-		    return targetQueue.AddMessageAsync(queueMessage);
-	    }
 
-	    public Task CreateEncryptedMessageAsync(string message)
+			await CreateQueueIfNotExistsAsync();
+			await _targetQueue.AddMessageAsync(queueMessage);
+		}
+
+	    public async Task CreateEncryptedMessageAsync(string message)
 	    {
 		    var encryptedMessage = Security.EncryptString(Security.ToSecureString(message));
-		    return CreateMessageAsync(encryptedMessage);
 
+			await CreateQueueIfNotExistsAsync();
+			await CreateMessageAsync(encryptedMessage);
 	    }
     }
 }

@@ -3,16 +3,16 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "suffixAppName": {
-      "value": "MyTestApp"
+      "value": "MyTestAppTest"
     },
     "adAppClientId": {
-      "value": "MyTestApp"
+      "value": "***REMOVED***"
     },
     "adAppClientSecret": {
-      "value": "MyTestApp"
+      "value": "***REMOVED***"
     },
     "azureIssuerId": {
-      "value": "MyTestApp"
+      "value": "***REMOVED***"
     },
     "userAdministrationGraphSiteId": {
       "value": "***REMOVED***,***REMOVED***,***REMOVED***"
