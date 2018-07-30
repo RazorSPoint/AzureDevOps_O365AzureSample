@@ -18,6 +18,7 @@ $ExoSession = Connect-ExchangeOnline -AdminUser $adminUser -AdminPassword $admin
 Write-Output "Connected to Exchange Online"
 
 try {
+	Write-Output "Trying to add user $userPrincipalName to the group with ID $securityGroup"
     Add-DistributionGroupMember -Identity $securityGroup -Member $userPrincipalName -ErrorAction Stop
 }
 catch{
