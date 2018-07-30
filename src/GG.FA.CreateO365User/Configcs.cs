@@ -10,7 +10,6 @@ namespace GG.FA.CreateO365User
 	    {
 		    get
 		    {
-			    // site: ***REMOVED***/sites/gut-goedelitz/UserAdminiatration
 				return GetConfig("UserAdministrationGraphSiteId");
 		    }
 	    }
@@ -19,7 +18,6 @@ namespace GG.FA.CreateO365User
 		{
 		    get
 		    {
-			    // list: ***REMOVED***/sites/gut-goedelitz/UserAdminiatration/Lists/UserInventory
 				return GetConfig("UserAdminstrationSharePointListId");
 		    }
 	    }
