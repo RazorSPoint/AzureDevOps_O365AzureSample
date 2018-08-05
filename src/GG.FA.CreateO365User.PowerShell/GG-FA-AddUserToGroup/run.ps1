@@ -3,7 +3,7 @@
 $requestBody = Get-Content $triggerInput -Raw | ConvertFrom-Json
 $securityGroup = $requestBody.securityGroup
 $userPrincipalName = $requestBody.userPrincipalName
-$adminUser = $requestBody.adminUser
+$adminUser = APPSETTING_AdminUser
 $adminPassword = $requestBody.password
 
 $savedErrorAction = $global:ErrorActionPreference
@@ -19,11 +19,33 @@ Write-Output "Connected to Exchange Online"
 
 try {
 	Write-Output "Trying to add user $userPrincipalName to the group with ID $securityGroup"
-    Add-DistributionGroupMember -Identity $securityGroup -Member $userPrincipalName -ErrorAction Stop
+
+	Add-DistributionGroupMember -Identity $securityGroup -Member $userPrincipalName -ErrorAction Stop
+
+	#Sometimes the user is not added, because it was just created. 
+	#We check and then fail for the queue to retry
+	Start-Sleep -Seconds 30		
+	Write-Output "Checking if user is added to group with ID $securityGroup"
+
+	$user = Get-User -Identity $userPrincipalName
+	$members = Get-DistributionGroupMember -Identity $securityGroup
+	$userDoesExists = $false
+
+	ForEach ($currentUser in $members) {
+		If ($currentUser -like $user) {
+			$userDoesExists = $true
+		} 
+	}
+
+	If ($userDoesExists) {
+  		Write-Output "$user exists in the group"
+	} Else {
+		throw "$user does not exist in the group"
+	}
 }
 catch{
 	Write-Output "Adding user $userPrincipalName to the group with ID $securityGroup failed."
-	$_
+	throw $_
 }
 finally{	
 	Disconnect-ExchangeOnline
