@@ -2,29 +2,32 @@
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
+"preFixAppName":{
+ "value": "RP"
+},
     "suffixAppName": {
       "value": "MyTestAppTest"
     },
     "adAppClientId": {
-      "value": "***REMOVED***"
+      "value": ""
     },
     "adAppClientSecret": {
-      "value": "***REMOVED***"
+      "value": ""
     },
     "azureIssuerId": {
-      "value": "***REMOVED***"
+      "value": ""
     },
     "userAdministrationGraphSiteId": {
-      "value": "***REMOVED***,***REMOVED***,***REMOVED***"
+      "value": ""
     },
     "userAdminstrationSharePointListId": {
-      "value": "***REMOVED***"
+      "value": ""
     },
     "o365AdminUser": {
-      "value": "sebastian.schuetze@***REMOVED***"
+      "value": ""
     },
     "o365AdminPassword": {
-      "value": "***REMOVED***"
+      "value": ""
     }
   }
 }
