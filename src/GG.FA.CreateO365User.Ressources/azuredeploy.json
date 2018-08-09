@@ -2,6 +2,12 @@
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
   "parameters": {
+    "preFixAppName": {
+      "type": "string",
+      "metadata": {
+        "description": "The name of the function app that you wish to create."
+      }
+    },
     "suffixAppName": {
       "type": "string",
       "metadata": {
@@ -52,9 +58,9 @@
     }
   },
   "variables": {
-    "functionAppName": "[concat('GG-FA-',parameters('suffixAppName'))]",
-    "functionAppNamePowerShell": "[concat('GG-FA-',parameters('suffixAppName'),'-PowerShell')]",
-    "hostingPlanName": "[concat('GG-FA-',parameters('suffixAppName'))]",
+    "functionAppName": "[concat(parameters('preFixAppName'),'-FA-',parameters('suffixAppName'))]",
+    "functionAppNamePowerShell": "[concat(parameters('preFixAppName'),'-FA-',parameters('suffixAppName'),'-PowerShell')]",
+    "hostingPlanName": "[concat(parameters('preFixAppName'),'-FA-',parameters('suffixAppName'))]",
     "storageAccountName": "[concat('storage',uniquestring(resourceGroup().id))]",
     "storageAccountid": "[concat(resourceGroup().id,'/providers/','Microsoft.Storage/storageAccounts/', variables('storageAccountName'))]",
     "issuerUrl": "[concat('https://sts.windows.net/',parameters('azureIssuerId'),'/')]",
