@@ -15,6 +15,7 @@ using System.Text;
 using GG.FA.Common.Services;
 using GG.FA.Common.Utilities;
 using GG.FA.Model;
+using Security = GG.FA.Common.Utilities.Security;
 
 namespace GG.FA.CreateO365User
 {
