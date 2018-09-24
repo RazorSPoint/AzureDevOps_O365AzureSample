@@ -12,6 +12,7 @@ using GG.FA.Common.Interfaces;
 using GG.FA.Common.Utilities;
 using GG.FA.Model;
 using Microsoft.Graph;
+using Security = GG.FA.Common.Utilities.Security;
 
 namespace GG.FA.Common.Services
 {
