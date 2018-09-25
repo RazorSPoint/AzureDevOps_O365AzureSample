@@ -1,21 +1,10 @@
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
 using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.AspNetCore.Http;
-using Microsoft.Azure.WebJobs.Host;
-using System.Net.Http;
 using Microsoft.Azure.WebJobs;
-using System.Net.Http.Headers;
 using System.Threading.Tasks;
-using GG.FA.Common;
-using Microsoft.Graph;
-using System.Text;
 using GG.FA.Common.Services;
 using GG.FA.Common.Utilities;
-using GG.FA.Model;
-using Security = GG.FA.Common.Utilities.Security;
+using Microsoft.Extensions.Logging;
 
 namespace GG.FA.CreateO365User
 {
@@ -47,13 +36,13 @@ namespace GG.FA.CreateO365User
                 Resource = "https://graph.microsoft.com"
             )]
             string graphToken,
-            TraceWriter log,
-	        ExecutionContext context)
+			ILogger log,
+			ExecutionContext context)
         {
 
             var azureFunctionsLogger = new AzureFunctionLogger(log);
-            var graphService = new GraphService(graphToken, azureFunctionsLogger);
-
+	        GraphService graphService = new GraphService(graphToken, azureFunctionsLogger);
+			
 	        var currUserItems = await graphService.GetUserFromSpUserListAsync(
 		        Configs.UserAdministrationGraphSiteId, 
 		        Configs.UserAdminstrationSharePointListId, 
@@ -79,9 +68,9 @@ namespace GG.FA.CreateO365User
 				
 				var createdUser = await graphService.AssignE2LicenseToUserById(userId);
 				
-				await exchangeOnlineService.AddUserToWerteAkademieGroupAsync(user.UserPrincipalName);
+				//await exchangeOnlineService.AddUserToWerteAkademieGroupAsync(user.UserPrincipalName);
 				
-				await sendPasswordQueue.CreateEncryptedMessageAsync($"{user.UserPrincipalName}|{user.PasswordProfile.Password}");
+				//await sendPasswordQueue.CreateEncryptedMessageAsync($"{user.UserPrincipalName}|{user.PasswordProfile.Password}");
 			}
 
 			return "Email sent!";
