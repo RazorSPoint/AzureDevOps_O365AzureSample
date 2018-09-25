@@ -2,34 +2,35 @@
 using System.Collections.Generic;
 using System.Text;
 using GG.FA.Common.Interfaces;
+using Microsoft.Extensions.Logging;
 
 namespace GG.FA.Common.Utilities
 {
     /// <summary>
     /// Azure Functions logger wrapper
     /// </summary>
-    public class AzureFunctionLogger : ILogger
+    public class AzureFunctionLogger : IMyLogger
     {
-        private static Microsoft.Azure.WebJobs.Host.TraceWriter _logger;
+        private static Microsoft.Extensions.Logging.ILogger _logger;
 
-        public AzureFunctionLogger(Microsoft.Azure.WebJobs.Host.TraceWriter logger)
+        public AzureFunctionLogger(ILogger logger)
         {
             _logger = logger;
         }
 
         public void Error(string message)
         {
-            _logger.Error(message);
+            _logger.LogError(message);
         }
 
         public void Info(string message)
         {
-            _logger.Info(message);
+            _logger.LogInformation(message);
         }
 
         public void Warning(string message)
         {
-            _logger.Warning(message);
+            _logger.LogWarning(message);
         }
     }
 }

@@ -6,6 +6,7 @@ using GG.FA.Common.Utilities;
 using GG.FA.Model;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Host;
+using Microsoft.Extensions.Logging;
 
 namespace GG.FA.CreateO365User
 {
@@ -24,20 +25,20 @@ namespace GG.FA.CreateO365User
 		        Resource = "https://graph.microsoft.com"
 	        )]
 	        string graphToken,
-	        TraceWriter log,
+	        ILogger log,
 	        ExecutionContext context)
         {
 			var azureFunctionsLogger = new AzureFunctionLogger(log);
 
-	        log.Info($"C# Queue trigger function processed: {myQueueItem}");
-	        log.Info($"C# Queue trigger function processed: {graphToken}");
+	        log.LogInformation($"C# Queue trigger function processed: {myQueueItem}");
+	        log.LogInformation($"C# Queue trigger function processed: {graphToken}");
 
 	        var decodedQueue = Security.ToInsecureString(Security.DecryptString(myQueueItem)).Split('|');
 	        var userPrincipalName = decodedQueue[0];
 	        var userPassword = decodedQueue[1];
 
-			log.Info($"C# Queue trigger function processed: {userPrincipalName}");
-			log.Info($"C# Queue trigger function processed: {userPassword}");
+			log.LogInformation($"C# Queue trigger function processed: {userPrincipalName}");
+			log.LogInformation($"C# Queue trigger function processed: {userPassword}");
 
 			var graphService = new GraphService(graphToken, azureFunctionsLogger);
 	        var emailService = new EmailService(graphService, Path.Combine(context.FunctionDirectory, "..", "Templates"));

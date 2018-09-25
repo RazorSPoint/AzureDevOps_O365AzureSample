@@ -7,8 +7,8 @@ namespace GG.FA.Common.Interfaces
     /// <summary>
     /// Generic logging interface for portability 
     /// </summary>
-    public interface ILogger
-    {
+    public interface IMyLogger
+	{
         void Error(string message);
         void Info(string message);
         void Warning(string message);

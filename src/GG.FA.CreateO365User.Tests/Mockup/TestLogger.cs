@@ -7,7 +7,7 @@ namespace GG.FA.CreateO365User.Tests.Mockup
     /// <summary>
     /// Logging class as a mackup wrapper for the logging during testing.
     /// </summary>
-    class TestLogger: ILogger
+    class TestLogger: IMyLogger
     {
         public void Error(string message)
         {
