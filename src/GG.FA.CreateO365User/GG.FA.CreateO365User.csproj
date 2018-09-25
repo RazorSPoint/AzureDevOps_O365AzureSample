@@ -5,6 +5,9 @@
     <Platforms>AnyCPU;x86</Platforms>
     <Configurations>Debug;Release;Debug Common Library;Release Common Library</Configurations>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug Common Library|AnyCPU'">
+    <Optimize>false</Optimize>
+  </PropertyGroup>
   <ItemGroup>
     <Compile Remove="ExchangeOnline\**" />
     <EmbeddedResource Remove="ExchangeOnline\**" />
@@ -28,19 +31,10 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.Azure.WebJobs.Extensions.AuthTokens" Version="1.0.0-beta6" />
-    <PackageReference Include="Microsoft.Azure.WebJobs.Extensions.CosmosDB" Version="3.0.1" />
-    <PackageReference Include="Microsoft.Azure.WebJobs.Extensions.DurableTask" Version="1.6.2" />
-    <PackageReference Include="Microsoft.Azure.WebJobs.Extensions.EventHubs" Version="3.0.0" />
     <PackageReference Include="Microsoft.Azure.WebJobs.Extensions.MicrosoftGraph" Version="1.0.0-beta6" />
-    <PackageReference Include="Microsoft.Azure.WebJobs.Extensions.SendGrid" Version="3.0.0" />
-    <PackageReference Include="Microsoft.Azure.WebJobs.Extensions.ServiceBus" Version="3.0.0" />
     <PackageReference Include="Microsoft.Azure.WebJobs.Extensions.Storage" Version="3.0.0" />
-    <PackageReference Include="Microsoft.Azure.WebJobs.Extensions.Twilio" Version="3.0.0" />
-    <PackageReference Include="Microsoft.Azure.WebJobs.Script.ExtensionsMetadataGenerator" Version="1.0.1" />
     <PackageReference Include="Microsoft.Graph" Version="1.11.0" />
     <PackageReference Include="Microsoft.NET.Sdk.Functions" Version="1.0.22" />
-    <PackageReference Include="WindowsAzure.Storage" Version="9.3.2" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GG.FA.Common\GG.FA.Common.csproj" />
@@ -51,8 +45,11 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="local.settings.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <CopyToPublishDirectory>Never</CopyToPublishDirectory>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Properties\" />
   </ItemGroup>
 </Project>
