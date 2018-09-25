@@ -20,7 +20,7 @@ namespace GG.FA.Common.Services
     {
        
         /// <summary>   logger interface used to log. </summary>
-        private readonly ILogger _log;
+        private readonly IMyLogger _log;
 
         /// <summary>   Instance of the graph client. </summary>
         private GraphServiceClient _graphClient = null;
@@ -68,7 +68,7 @@ namespace GG.FA.Common.Services
 		/// <param name="log">          the logger instance that will be used in the graph client. </param>
 		////////////////////////////////////////////////////////////////////////////////////////////////////
 
-		public GraphService(string graphToken, ILogger log)
+		public GraphService(string graphToken, IMyLogger log)
         {
             _log = log;
             this.GetAuthenticatedClient(graphToken);
