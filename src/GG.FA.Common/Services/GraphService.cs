@@ -350,10 +350,10 @@ namespace GG.FA.Common.Services
             var department = fields.ContainsKey("Abteilung") ? (string)fields["Abteilung"] : "";
             var segment = fields.ContainsKey("Segment") ? (string)fields["Segment"] : "";
             var state = fields.ContainsKey("Bundesland") ? (string)fields["Bundesland"] : "";
-            var alternateEmail = fields.ContainsKey("E_x002d_Mail") ? (string)fields["E_x002d_Mail"] : "";
+            var alternateEmail = fields.ContainsKey("EMail") ? (string)fields["EMail"] : "";
             var homePhone = fields.ContainsKey("Festnetz") ? (string)fields["Festnetz"] : "";
             var year = fields.ContainsKey("Jahrgang") ? (string)fields["Jahrgang"] : "";
-            var city = fields.ContainsKey("Ort") ? (string)fields["Ort"] : "";
+            var city = fields.ContainsKey("UserCity") ? (string)fields["UserCity"] : "";
             var mobilePhone = fields.ContainsKey("Mobiltelefon") ? (string)fields["Mobiltelefon"] : "";
             var forwardEmail = fields.ContainsKey("WeiterleitungAktiv") && (bool)fields["WeiterleitungAktiv"];
             var wKBereich = fields.ContainsKey("WKBereich") ? (string)fields["WKBereich"] : "";
