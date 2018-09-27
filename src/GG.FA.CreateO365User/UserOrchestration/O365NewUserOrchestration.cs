@@ -66,7 +66,7 @@ namespace GG.FA.CreateO365User
 
 				var userId = await graphService.CreateUserAsync(user);
 				
-				var createdUser = await graphService.AssignE2LicenseToUserById(userId);
+				var createdUser = await graphService.AssignE2LicenseToUserById(userId,Configs.DefaultO365UserLicense);
 				
 				//await exchangeOnlineService.AddUserToWerteAkademieGroupAsync(user.UserPrincipalName);
 				
