@@ -270,16 +270,15 @@ namespace GG.FA.Common.Services
         }
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////
-        /// <summary>   Assign an E2 license to an O365 user by user id. </summary>
-        ///
-        /// <remarks>   Sebastian Schütze, 07/04/2018. </remarks>
-        ///
-        /// <param name="userId">   Identifier for the user. </param>
-        ///
-        /// <returns>   An asynchronous result that yields a User. </returns>
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-
-        public async Task<User> AssignE2LicenseToUserById(string userId, string license)
+	    ///  <summary>   Assign an E2 license to an O365 user by user id. </summary>
+	    /// 
+	    ///  <remarks>   Sebastian Schütze, 07/04/2018. </remarks>
+	    /// 
+	    ///  <param name="userId">   Identifier for the user. </param>
+	    ///  <param name="license"> license string that should be assigned to the user</param>
+	    /// <returns>   An asynchronous result that yields a User. </returns>
+	    ////////////////////////////////////////////////////////////////////////////////////////////////////
+	    public async Task<User> AssignE2LicenseToUserById(string userId, string license)
         {
             var skus = await GraphClient.SubscribedSkus.Request().GetAsync();
             var e2Sku = skus.FirstOrDefault(sku => sku.SkuPartNumber.Equals(license));
@@ -405,6 +404,6 @@ namespace GG.FA.Common.Services
         
         Task<IEnumerable<ListItem>> GetUserFromSpUserListAsync(string siteId, string listId,bool testuserOnly);
         
-        Task<User> AssignE2LicenseToUserById(string userId);
+        Task<User> AssignE2LicenseToUserById(string userId, string license);
     }
 }
