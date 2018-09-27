@@ -279,10 +279,15 @@ namespace GG.FA.Common.Services
         /// <returns>   An asynchronous result that yields a User. </returns>
         ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        public async Task<User> AssignE2LicenseToUserById(string userId)
+        public async Task<User> AssignE2LicenseToUserById(string userId, string license)
         {
             var skus = await GraphClient.SubscribedSkus.Request().GetAsync();
-            var e2Sku = skus.FirstOrDefault(sku => sku.SkuPartNumber.Equals("STANDARDWOFFPACK"));
+            var e2Sku = skus.FirstOrDefault(sku => sku.SkuPartNumber.Equals(license));
+
+	        if (e2Sku == null)
+	        {
+		        throw new KeyNotFoundException($"The license '{license}' is not available on the O365 tenant");
+	        }
 
             var assignedLicense = new List<AssignedLicense>() { new AssignedLicense { SkuId = e2Sku.SkuId } };
 
@@ -345,18 +350,18 @@ namespace GG.FA.Common.Services
             var fields = listItem.Fields.AdditionalData;
 
             var title = fields.ContainsKey("Title") ? (string)fields["Title"] : "";
-            var firstname = fields.ContainsKey("Vorname") ? (string)fields["Vorname"] : "";
-            var lastname = fields.ContainsKey("Nachname") ? (string)fields["Nachname"] : "";
-            var department = fields.ContainsKey("Abteilung") ? (string)fields["Abteilung"] : "";
+            var firstname = fields.ContainsKey("UserFirstName") ? (string)fields["UserFirstName"] : "";
+            var lastname = fields.ContainsKey("UserLastName") ? (string)fields["UserLastName"] : "";
+            var department = fields.ContainsKey("CompanyDepartment") ? (string)fields["CompanyDepartment"] : "";
             var segment = fields.ContainsKey("Segment") ? (string)fields["Segment"] : "";
-            var state = fields.ContainsKey("Bundesland") ? (string)fields["Bundesland"] : "";
-            var alternateEmail = fields.ContainsKey("EMail") ? (string)fields["EMail"] : "";
-            var homePhone = fields.ContainsKey("Festnetz") ? (string)fields["Festnetz"] : "";
-            var year = fields.ContainsKey("Jahrgang") ? (string)fields["Jahrgang"] : "";
+            var state = fields.ContainsKey("State") ? (string)fields["State"] : "";
+            var alternateEmail = fields.ContainsKey("AlternateEMail") ? (string)fields["AlternateEMail"] : "";
+            var homePhone = fields.ContainsKey("HomePhone") ? (string)fields["HomePhone"] : "";
+            var year = fields.ContainsKey("YearJoined") ? (string)fields["YearJoined"] : "";
             var city = fields.ContainsKey("UserCity") ? (string)fields["UserCity"] : "";
-            var mobilePhone = fields.ContainsKey("Mobiltelefon") ? (string)fields["Mobiltelefon"] : "";
-            var forwardEmail = fields.ContainsKey("WeiterleitungAktiv") && (bool)fields["WeiterleitungAktiv"];
-            var wKBereich = fields.ContainsKey("WKBereich") ? (string)fields["WKBereich"] : "";
+            var mobilePhone = fields.ContainsKey("UserMobilePhone") ? (string)fields["UserMobilePhone"] : "";
+            var forwardEmail = fields.ContainsKey("ForwardingActive") && (bool)fields["ForwardingActive"];
+            var userCircle = fields.ContainsKey("UserCircle") ? (string)fields["UserCircle"] : "";
 
             var userPrincipalName = O365UserPropertyHelper.UserPrincipalName(firstname, lastname, department);
             var searchableDisplayName = O365UserPropertyHelper.GetSearchableDisplayName(title, firstname, lastname);

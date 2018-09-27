@@ -55,6 +55,16 @@
       "metadata": {
         "description": "Password of the O365 admin."
       }
+    },
+    "defaultO365UserLicense": {
+      "type": "securestring",
+      "allowedValues": [
+        "DEVELOPERPACK",
+        "STANDARDWOFFPACK"
+      ],
+      "metadata": {
+        "description": "Choose the default O365 license that will be used when creating a new user."
+      }
     }
   },
   "variables": {
@@ -151,6 +161,10 @@
             {
               "name": "O365AdminPassword",
               "value": "[parameters('o365AdminPassword')]"
+            },
+            {
+              "name": "DefaultO365UserLicense",
+              "value": "[parameters('defaultO365UserLicense')]"
             },
             {
               "name": "SendPasswordQueueName",
