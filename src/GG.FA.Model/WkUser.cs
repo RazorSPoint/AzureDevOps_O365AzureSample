@@ -13,7 +13,7 @@ namespace GG.FA.Model
 
         public bool ForwardMail { get; set; }
 
-        public string WkBereich { get; set; }
+        public string UserCircle { get; set; }
         
     }
 }
