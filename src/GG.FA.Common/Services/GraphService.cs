@@ -355,7 +355,7 @@ namespace GG.FA.Common.Services
             var segment = fields.ContainsKey("Segment") ? (string)fields["Segment"] : "";
             var state = fields.ContainsKey("State") ? (string)fields["State"] : "";
             var alternateEmail = fields.ContainsKey("AlternateEMail") ? (string)fields["AlternateEMail"] : "";
-            var homePhone = fields.ContainsKey("HomePhone") ? (string)fields["HomePhone"] : "";
+            var userHomePhone = fields.ContainsKey("UserHomePhone") ? (string)fields["UserHomePhone"] : "";
             var year = fields.ContainsKey("YearJoined") ? (string)fields["YearJoined"] : "";
             var city = fields.ContainsKey("UserCity") ? (string)fields["UserCity"] : "";
             var mobilePhone = fields.ContainsKey("UserMobilePhone") ? (string)fields["UserMobilePhone"] : "";
@@ -370,7 +370,7 @@ namespace GG.FA.Common.Services
             {
                 AccountEnabled = true,
                 UserPrincipalName = userPrincipalName,
-                MobilePhone = homePhone,
+                MobilePhone = userHomePhone,
                 BusinessPhones = new[] { mobilePhone },
                 Department = department,
                 PasswordPolicies = "DisablePasswordExpiration",
