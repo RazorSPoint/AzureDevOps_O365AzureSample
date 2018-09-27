@@ -62,6 +62,14 @@ namespace GG.FA.CreateO365User
 		    }
 	    }
 
+	    public static string DefaultO365UserLicense
+		{
+		    get
+		    {
+			    return GetConfig("DefaultO365UserLicense");
+		    }
+	    }
+
 		private static string GetConfig(string configName)
 	    {
 			return System.Environment.GetEnvironmentVariable(configName,
