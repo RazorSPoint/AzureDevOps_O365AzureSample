@@ -22,11 +22,11 @@
             <CHOICE>nicht anlegen</CHOICE>
           </CHOICES>
         </Field>
-        <Field Type="Text" DisplayName="E-Mail" MaxLength="255" Group="UserAdministration" ID="{6012b831-9123-411b-9600-4ac4467e4637}" StaticName="EMail1" Name="EMail1" />
+        <Field Type="Text" DisplayName="E-Mail" MaxLength="255" Group="UserAdministration" ID="{6012b831-9123-411b-9600-4ac4467e4637}" StaticName="AlternateEMail" Name="AlternateEMail" />
         <Field Type="Boolean" DisplayName="Weiterleitung Aktiv" Group="UserAdministration" ID="{b3dcbb5d-0ebb-4c9c-bedd-edba5aa06bd2}" StaticName="ForwardingActive" Name="ForwardingActive">
           <Default>0</Default>
         </Field>
-        <Field Type="Text" DisplayName="Mobiltelefon" MaxLength="255" Group="UserAdministration" ID="{34d08863-b870-4bc0-aadd-dc491b7c7b4b}" StaticName="UserHomePhone" Name="UserHomePhone" />
+        <Field Type="Text" DisplayName="Mobiltelefon" MaxLength="255" Group="UserAdministration" ID="{34d08863-b870-4bc0-aadd-dc491b7c7b4b}" StaticName="UserMobilePhone" Name="UserMobilePhone" />
         <Field Type="Choice" DisplayName="Jahrgang" Format="Dropdown" FillInChoice="FALSE" Group="UserAdministration" ID="{93b69178-a0ab-4b03-9426-4ba0a994bb6c}" StaticName="YearJoined" Name="YearJoined">
           <CHOICES>
             <CHOICE>2011</CHOICE>
@@ -58,12 +58,9 @@
             <CHOICE>2037</CHOICE>
           </CHOICES>
         </Field>
-        <Field Type="Choice" DisplayName="Abteilung" Format="Dropdown" FillInChoice="FALSE" Group="UserAdministration" ID="{68fa0382-8ae6-4556-8f31-6cd069b0bb74}" StaticName="CompanyDepartment" Name="CompanyDepartment">
+        <Field Type="Choice" DisplayName="Domain" Format="Dropdown" FillInChoice="FALSE" Group="UserAdministration" ID="{68fa0382-8ae6-4556-8f31-6cd069b0bb74}" StaticName="UserDomain" Name="UserDomain">
           <CHOICES>
-            <CHOICE>dt-biografien.gut-goedelitz.de</CHOICE>
-            <CHOICE>gut-goedelitz.de</CHOICE>
-            <CHOICE>hsm.gut-goedelitz.de</CHOICE>
-            <CHOICE>***REMOVED***</CHOICE>
+            <CHOICE>{parameter:UserDomain}</CHOICE>
           </CHOICES>
         </Field>
         <Field Type="Choice" DisplayName="Bundesland" Format="Dropdown" FillInChoice="FALSE" Group="UserAdministration" ID="{e87727af-6459-4304-bbc0-c16e2e4c3780}" StaticName="State" Name="State">
@@ -86,7 +83,7 @@
             <CHOICE>Thüringen</CHOICE>
           </CHOICES>
         </Field>
-        <Field Type="Text" DisplayName="Festnetz" MaxLength="255" Group="UserAdministration" ID="{e8ae2cb5-bac8-4309-902a-1020f01e4b3b}" StaticName="Festnetz" Name="Festnetz" />
+        <Field Type="Text" DisplayName="Festnetz" MaxLength="255" Group="UserAdministration" ID="{e8ae2cb5-bac8-4309-902a-1020f01e4b3b}" StaticName="UserHomePhone" Name="UserHomePhone" />
         <Field Type="MultiChoice" DisplayName="Sicherheitsgruppe" Description="Zu welchen Sicherheitsgruppen die Bereichkategorie gehört" Required="TRUE" FillInChoice="FALSE" Group="UserAdministration" ID="{608407be-fe61-438a-af7f-ee96478c2390}" StaticName="Sicherheitsgruppe" Name="Sicherheitsgruppe">
           <CHOICES>
             <CHOICE>Alle Beiräte | WerteAkademie</CHOICE>
@@ -113,12 +110,12 @@
             <pnp:FieldRef ID="93b69178-a0ab-4b03-9426-4ba0a994bb6c" Name="YearJoined" />
             <pnp:FieldRef ID="b6488c19-bf84-4155-b8a5-9af751be1e96" Name="Segment" />
             <pnp:FieldRef ID="a2a01bdc-e4d9-4edd-a245-91d0e4361bde" Name="UserCircle" />
-            <pnp:FieldRef ID="68fa0382-8ae6-4556-8f31-6cd069b0bb74" Name="CompanyDepartment" />
+            <pnp:FieldRef ID="68fa0382-8ae6-4556-8f31-6cd069b0bb74" Name="UserDomain" />
             <pnp:FieldRef ID="ab065451-14d6-485a-88c3-414c908d50d3" Name="CategoryDescription" />
             <pnp:FieldRef ID="629246ef-fca2-4d54-88f8-0990a8d69655" Name="UserCity" />
             <pnp:FieldRef ID="e87727af-6459-4304-bbc0-c16e2e4c3780" Name="Bundesland" />
-            <pnp:FieldRef ID="e8ae2cb5-bac8-4309-902a-1020f01e4b3b" Name="Festnetz" />
-            <pnp:FieldRef ID="34d08863-b870-4bc0-aadd-dc491b7c7b4b" Name="UserHomePhone" />
+            <pnp:FieldRef ID="e8ae2cb5-bac8-4309-902a-1020f01e4b3b" Name="UserHomePhone" />
+            <pnp:FieldRef ID="34d08863-b870-4bc0-aadd-dc491b7c7b4b" Name="UserMobilePhone" />
             <pnp:FieldRef ID="e13325d6-e023-434a-bb74-e853e0de2bb2" Name="Testbenutzer" Required="true" />
             <pnp:FieldRef ID="b3dcbb5d-0ebb-4c9c-bedd-edba5aa06bd2" Name="ForwardingActive" />
           </pnp:FieldRefs>
@@ -147,8 +144,8 @@
                 <FieldRef Name="LinkTitle" />
                 <FieldRef Name="UserFirstName" />
                 <FieldRef Name="UserLastName" />
-                <FieldRef Name="EMail1" />
-                <FieldRef Name="CompanyDepartment" />
+                <FieldRef Name="AlternateEMail" />
+                <FieldRef Name="UserDomain" />
                 <FieldRef Name="YearJoined" />
                 <FieldRef Name="Segment" />
                 <FieldRef Name="UserCircle" />
@@ -160,14 +157,14 @@
             </View>
           </pnp:Views>
           <pnp:FieldRefs>
-            <pnp:FieldRef ID="68fa0382-8ae6-4556-8f31-6cd069b0bb74" Name="CompanyDepartment" DisplayName="Abteilung" />
+            <pnp:FieldRef ID="68fa0382-8ae6-4556-8f31-6cd069b0bb74" Name="UserDomain" DisplayName="Abteilung" />
             <pnp:FieldRef ID="82259530-8bd0-459e-a4a0-18a7cbb60f61" Name="AccountStatus" DisplayName="AccountStatus" />
             <pnp:FieldRef ID="ab065451-14d6-485a-88c3-414c908d50d3" Name="CategoryDescription" DisplayName="Beschreibung" />
             <pnp:FieldRef ID="e87727af-6459-4304-bbc0-c16e2e4c3780" Name="State" DisplayName="Bundesland" />
-            <pnp:FieldRef ID="6012b831-9123-411b-9600-4ac4467e4637" Name="EMail1" DisplayName="E-Mail" />
-            <pnp:FieldRef ID="e8ae2cb5-bac8-4309-902a-1020f01e4b3b" Name="Festnetz" DisplayName="Festnetz" />
+            <pnp:FieldRef ID="6012b831-9123-411b-9600-4ac4467e4637" Name="AlternateEMail" DisplayName="E-Mail" />
+            <pnp:FieldRef ID="e8ae2cb5-bac8-4309-902a-1020f01e4b3b" Name="UserHomePhone" DisplayName="UserHomePhone" />
             <pnp:FieldRef ID="93b69178-a0ab-4b03-9426-4ba0a994bb6c" Name="YearJoined" DisplayName="Jahrgang" />
-            <pnp:FieldRef ID="34d08863-b870-4bc0-aadd-dc491b7c7b4b" Name="UserHomePhone" DisplayName="Mobiltelefon" />
+            <pnp:FieldRef ID="34d08863-b870-4bc0-aadd-dc491b7c7b4b" Name="UserMobilePhone" DisplayName="Mobiltelefon" />
             <pnp:FieldRef ID="8acb3af7-5c7e-4ee2-81d7-ac06f6eace2d" Name="UserLastName" DisplayName="Nachname" />
             <pnp:FieldRef ID="629246ef-fca2-4d54-88f8-0990a8d69655" Name="UserCity" DisplayName="Ort" />
             <pnp:FieldRef ID="b6488c19-bf84-4155-b8a5-9af751be1e96" Name="Segment" DisplayName="Segment" />
@@ -176,6 +173,24 @@
             <pnp:FieldRef ID="b3dcbb5d-0ebb-4c9c-bedd-edba5aa06bd2" Name="ForwardingActive" DisplayName="Weiterleitung Aktiv" />
             <pnp:FieldRef ID="a2a01bdc-e4d9-4edd-a245-91d0e4361bde" Name="UserCircle" DisplayName="Wk-Bereich" />
           </pnp:FieldRefs>
+          <pnp:DataRows>
+            <pnp:DataRow>
+              <pnp:DataValue FieldName="Title">Lord</pnp:DataValue>
+              <pnp:DataValue FieldName="UserFirstName" >Darth</pnp:DataValue>
+              <pnp:DataValue FieldName="UserLastName" >Vader</pnp:DataValue>
+              <pnp:DataValue FieldName="YearJoined" >2011</pnp:DataValue>
+              <pnp:DataValue FieldName="AlternateEMail" >sebastian.schuetze@razorspoint.com</pnp:DataValue>
+              <pnp:DataValue FieldName="UserCity" >Berlin</pnp:DataValue>
+              <pnp:DataValue FieldName="State" >State</pnp:DataValue>
+              <pnp:DataValue FieldName="ForwardingActive" >False</pnp:DataValue>
+              <pnp:DataValue FieldName="Testbenutzer" >True</pnp:DataValue>
+              <pnp:DataValue FieldName="UserHomePhone" >030123456</pnp:DataValue>
+              <pnp:DataValue FieldName="UserMobilePhone" >0172123456</pnp:DataValue>
+              <pnp:DataValue FieldName="Segment" >Medien</pnp:DataValue>
+              <pnp:DataValue FieldName="AccountStatus" >nicht angelegt</pnp:DataValue>
+              <pnp:DataValue FieldName="UserDomain" >razorspoint.com</pnp:DataValue>
+            </pnp:DataRow>
+          </pnp:DataRows>
         </pnp:ListInstance>
         <pnp:ListInstance Title="UserCircle" Description="" OnQuickLaunch="true" TemplateType="100" Url="Lists/UserCircle" MinorVersionLimit="0" MaxVersionLimit="0" DraftVersionVisibility="0" RemoveExistingContentTypes="true" ContentTypesEnabled="true" EnableAttachments="false" EnableFolderCreation="false" NoCrawl="true" ImageUrl="/_layouts/15/images/itgen.png?rev=44">
           <pnp:ContentTypeBindings>

@@ -351,7 +351,7 @@ namespace GG.FA.Common.Services
             var title = fields.ContainsKey("Title") ? (string)fields["Title"] : "";
             var firstname = fields.ContainsKey("UserFirstName") ? (string)fields["UserFirstName"] : "";
             var lastname = fields.ContainsKey("UserLastName") ? (string)fields["UserLastName"] : "";
-            var department = fields.ContainsKey("CompanyDepartment") ? (string)fields["CompanyDepartment"] : "";
+            var department = fields.ContainsKey("UserDomain") ? (string)fields["UserDomain"] : "";
             var segment = fields.ContainsKey("Segment") ? (string)fields["Segment"] : "";
             var state = fields.ContainsKey("State") ? (string)fields["State"] : "";
             var alternateEmail = fields.ContainsKey("AlternateEMail") ? (string)fields["AlternateEMail"] : "";
