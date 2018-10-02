@@ -23,6 +23,7 @@
           </CHOICES>
         </Field>
         <Field Type="Text" DisplayName="E-Mail" MaxLength="255" Group="UserAdministration" ID="{6012b831-9123-411b-9600-4ac4467e4637}" StaticName="AlternateEMail" Name="AlternateEMail" />
+        <Field Type="Text" DisplayName="Beschreibung" MaxLength="255" Group="UserAdministration" ID="{2c5c995e-29f3-4ddd-8606-d3903ad76be4}" StaticName="CategoryDescription" Name="CategoryDescription" />
         <Field Type="Boolean" DisplayName="Weiterleitung Aktiv" Group="UserAdministration" ID="{b3dcbb5d-0ebb-4c9c-bedd-edba5aa06bd2}" StaticName="ForwardingActive" Name="ForwardingActive">
           <Default>0</Default>
         </Field>
@@ -111,7 +112,7 @@
             <pnp:FieldRef ID="b6488c19-bf84-4155-b8a5-9af751be1e96" Name="Segment" />
             <pnp:FieldRef ID="a2a01bdc-e4d9-4edd-a245-91d0e4361bde" Name="UserCircle" />
             <pnp:FieldRef ID="68fa0382-8ae6-4556-8f31-6cd069b0bb74" Name="UserDomain" />
-            <pnp:FieldRef ID="ab065451-14d6-485a-88c3-414c908d50d3" Name="CategoryDescription" />
+            <pnp:FieldRef ID="2c5c995e-29f3-4ddd-8606-d3903ad76be4" Name="CategoryDescription" />
             <pnp:FieldRef ID="629246ef-fca2-4d54-88f8-0990a8d69655" Name="UserCity" />
             <pnp:FieldRef ID="e87727af-6459-4304-bbc0-c16e2e4c3780" Name="Bundesland" />
             <pnp:FieldRef ID="e8ae2cb5-bac8-4309-902a-1020f01e4b3b" Name="UserHomePhone" />
@@ -159,7 +160,7 @@
           <pnp:FieldRefs>
             <pnp:FieldRef ID="68fa0382-8ae6-4556-8f31-6cd069b0bb74" Name="UserDomain" DisplayName="Abteilung" />
             <pnp:FieldRef ID="82259530-8bd0-459e-a4a0-18a7cbb60f61" Name="AccountStatus" DisplayName="AccountStatus" />
-            <pnp:FieldRef ID="ab065451-14d6-485a-88c3-414c908d50d3" Name="CategoryDescription" DisplayName="Beschreibung" />
+            <pnp:FieldRef ID="2c5c995e-29f3-4ddd-8606-d3903ad76be4" Name="CategoryDescription" DisplayName="Beschreibung" />
             <pnp:FieldRef ID="e87727af-6459-4304-bbc0-c16e2e4c3780" Name="State" DisplayName="Bundesland" />
             <pnp:FieldRef ID="6012b831-9123-411b-9600-4ac4467e4637" Name="AlternateEMail" DisplayName="E-Mail" />
             <pnp:FieldRef ID="e8ae2cb5-bac8-4309-902a-1020f01e4b3b" Name="UserHomePhone" DisplayName="UserHomePhone" />
