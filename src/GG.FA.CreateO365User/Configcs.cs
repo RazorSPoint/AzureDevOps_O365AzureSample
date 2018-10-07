@@ -38,22 +38,6 @@ namespace GG.FA.CreateO365User
 		    }
 	    }
 
-	    public static string O365AdminUser
-		{
-		    get
-		    {
-			    return GetConfig("O365AdminUser");
-		    }
-	    }
-
-	    public static string O365AdminPassword
-		{
-		    get
-		    {
-			    return GetConfig("O365AdminPassword");
-		    }
-	    }
-
 	    public static string QueueConnectionString
 		{
 		    get
@@ -70,7 +54,17 @@ namespace GG.FA.CreateO365User
 		    }
 	    }
 
-		private static string GetConfig(string configName)
+	    public static string DefaultExchangeGroupId
+	    {
+		    get
+		    {
+			    return GetConfig("DefaultExchangeGroupId");
+
+		    }
+
+	    }
+
+	    private static string GetConfig(string configName)
 	    {
 			return System.Environment.GetEnvironmentVariable(configName,
 				EnvironmentVariableTarget.Process);
