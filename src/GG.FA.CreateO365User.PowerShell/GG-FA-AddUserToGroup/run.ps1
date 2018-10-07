@@ -3,8 +3,8 @@
 $requestBody = Get-Content $triggerInput -Raw | ConvertFrom-Json
 $securityGroup = $requestBody.securityGroup
 $userPrincipalName = $requestBody.userPrincipalName
-$adminUser = APPSETTING_AdminUser
-$adminPassword = $requestBody.password
+$adminUser = APPSETTING_O365AdminUser
+$adminPassword = APPSETTING_O365AdminPassword
 
 $savedErrorAction = $global:ErrorActionPreference
 $global:ErrorActionPreference = 'Stop'
