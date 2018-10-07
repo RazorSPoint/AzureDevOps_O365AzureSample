@@ -57,13 +57,19 @@
       }
     },
     "defaultO365UserLicense": {
-      "type": "securestring",
+      "type": "string",
       "allowedValues": [
         "DEVELOPERPACK",
         "STANDARDWOFFPACK"
       ],
       "metadata": {
         "description": "Choose the default O365 license that will be used when creating a new user."
+      }
+    },
+    "defaultExchangeGroupId": {
+      "type": "string",
+      "metadata": {
+        "description": "Choose the default Exchange group by id that the new user will be assigned to when created."
       }
     }
   },
@@ -155,16 +161,12 @@
               "value": "[parameters('userAdminstrationSharePointListId')]"
             },
             {
-              "name": "O365AdminUser",
-              "value": "[parameters('o365AdminUser')]"
-            },
-            {
-              "name": "O365AdminPassword",
-              "value": "[parameters('o365AdminPassword')]"
-            },
-            {
               "name": "DefaultO365UserLicense",
               "value": "[parameters('defaultO365UserLicense')]"
+            },
+            {
+              "name": "DefaultExchangeGroupId",
+              "value": "[parameters('defaultExchangeGroupId')]"
             },
             {
               "name": "SendPasswordQueueName",
@@ -255,6 +257,14 @@
             {
               "name": "APPINSIGHTS_INSTRUMENTATIONKEY",
               "value": "[reference(concat('microsoft.insights/components/', variables('functionAppNamePowerShell'))).InstrumentationKey]"
+            },
+            {
+              "name": "O365AdminUser",
+              "value": "[parameters('o365AdminUser')]"
+            },
+            {
+              "name": "O365AdminPassword",
+              "value": "[parameters('o365AdminPassword')]"
             }
           ]
         }
