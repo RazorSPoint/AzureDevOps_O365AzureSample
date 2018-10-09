@@ -68,7 +68,7 @@ namespace GG.FA.CreateO365User
 				
 				await exchangeOnlineService.AddUserToGroupAsync(user.UserPrincipalName,Configs.DefaultExchangeGroupId);
 				
-				//await sendPasswordQueue.CreateEncryptedMessageAsync($"{user.UserPrincipalName}|{user.PasswordProfile.Password}");
+				await sendPasswordQueue.CreateEncryptedMessageAsync($"{user.UserPrincipalName}|{user.PasswordProfile.Password}");
 			}
 
 			return "Email sent!";
