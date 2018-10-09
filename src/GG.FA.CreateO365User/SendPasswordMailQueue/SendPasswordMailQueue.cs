@@ -30,33 +30,28 @@ namespace GG.FA.CreateO365User
         {
 			var azureFunctionsLogger = new AzureFunctionLogger(log);
 
-	        log.LogInformation($"C# Queue trigger function processed: {myQueueItem}");
-	        log.LogInformation($"C# Queue trigger function processed: {graphToken}");
-
 	        var decodedQueue = Security.ToInsecureString(Security.DecryptString(myQueueItem)).Split('|');
 	        var userPrincipalName = decodedQueue[0];
 	        var userPassword = decodedQueue[1];
 
-			log.LogInformation($"C# Queue trigger function processed: {userPrincipalName}");
-			log.LogInformation($"C# Queue trigger function processed: {userPassword}");
+			log.LogInformation($"Processing the password mail for user: {userPrincipalName}");
 
 			var graphService = new GraphService(graphToken, azureFunctionsLogger);
 	        var emailService = new EmailService(graphService, Path.Combine(context.FunctionDirectory, "..", "Templates"));
 	        Task.Run(async () =>
 	        {
 		        var user = await graphService.GetUserAsync(userPrincipalName);
-		        var admin = await graphService.GetUserAsync("sebastian.schuetze@***REMOVED***");
+		        var admin = await graphService.GetUserAsync(Configs.UserEmailSender);
+		        var userCopyMail = await graphService.GetUserAsync(Configs.UserEmailPasswordCopy);
 
-				var isExchangeDeployed = await graphService.IsServicePlanFromUserActiveAndDeployed(userPrincipalName, "EXCHANGE_S_STANDARD");
+				var isExchangeDeployed = await graphService.IsServicePlanFromUserActiveAndDeployed(userPrincipalName, Configs.DefaultExchangeOnlineLicense);
 
 				if (!isExchangeDeployed)
 				{
 					throw new Exception($"The Exchange is not yet assigned or deployed for user '{userPrincipalName}'");
 				}
-				else
-				{
-					emailService.SendPasswordMailAsync(user, admin, userPassword);
-				}		
+
+		        emailService.SendPasswordMailAsync(user, userCopyMail, admin, userPassword);
 
 	        }).GetAwaiter().GetResult();
 
