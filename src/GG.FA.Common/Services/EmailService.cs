@@ -21,7 +21,7 @@ namespace GG.FA.Common.Services
 		    _templatePath = templatePath;
 	    }
 
-	    public async void SendMailAsync(string sendByUserEmail, string[] toRecipientMails,string[] ccRecipientMails, string replyToMail, string subject, string bodyString)
+	    public async void SendMailAsync(string sendByUserEmail, string[] toRecipientMails,string[] bccRecipientMails, string replyToMail, string subject, string bodyString)
 	    {
 			var toRecipients = toRecipientMails.Select(email => new Recipient()
 		    {
@@ -32,7 +32,7 @@ namespace GG.FA.Common.Services
 				}
 			});
 
-		    var ccRecipients = ccRecipientMails.Select(email => new Recipient()
+		    var bccRecipients = bccRecipientMails.Select(email => new Recipient()
 		    {
 			    EmailAddress = new EmailAddress()
 			    {
@@ -61,7 +61,7 @@ namespace GG.FA.Common.Services
 		    {
 			    Subject = subject,
 			    ToRecipients = toRecipients,
-			    CcRecipients = ccRecipients,
+				BccRecipients = bccRecipients,
 			    Body = body,
 			    From = replyTo,
 			    ReplyTo = new[] { replyTo }
@@ -96,18 +96,18 @@ namespace GG.FA.Common.Services
 			return templateString;
 	    }
 
-	    public bool SendPasswordMailAsync(User user,User admin, string password)
+	    public bool SendPasswordMailAsync(User user, User userCopyMail, User admin, string password)
 	    {
 			var subject = "Der Werteakademie Account ist eingerichtet";
 
 		    var displayName = user.DisplayName;
 			var emailString = user.UserPrincipalName;
 		    var toMail = new[] { emailString + ";"+ displayName };
-		    var ccMail = new[] { $"{admin.UserPrincipalName};{admin.DisplayName}" };
+		    var bccMail = new[] { $"{userCopyMail.UserPrincipalName};{userCopyMail.DisplayName}" };
 
 			var mailBody = GetUserPasswordMail(emailString, displayName, password);
 
-		    SendMailAsync(admin.UserPrincipalName, toMail, ccMail, ccMail[0], subject, mailBody);
+		    SendMailAsync(admin.UserPrincipalName, toMail, bccMail, bccMail[0], subject, mailBody);
 
 			return true;
 	    }
