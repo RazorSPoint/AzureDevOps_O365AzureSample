@@ -60,10 +60,32 @@
       "type": "string",
       "allowedValues": [
         "DEVELOPERPACK",
-        "STANDARDWOFFPACK"
+        "STANDARDPACK",
+        "STANDARDWOFFPACK",
+        "STANDARDWOFFPACK_FACULTY",
+        "STANDARDWOFFPACK_STUDENT",
+        "STANDARDWOFFPACK_IW_STUDENT",
+        "STANDARDWOFFPACK_IW_FACULTY",
+        "STANDARDWOFFPACK_GOV"
       ],
       "metadata": {
         "description": "Choose the default O365 license that will be used when creating a new user."
+      }
+    },
+    "defaultExchangeOnlineLicense": {
+      "type": "string",
+      "allowedValues": [
+        "EXCHANGE_L_STANDARD",
+        "EXCHANGE_S_STANDARD_MIDMARKET",
+        "EXCHANGE_S_STANDARD",
+        "EXCHANGESTANDARD_STUDENT",
+        "EOP_ENTERPRISE_FACULTY",
+        "EXCHANGESTANDARD_GOV",
+        "EXCHANGEENTERPRISE_GOV",
+        "EXCHANGE_S_ENTERPRISE_GOV"
+      ],
+      "metadata": {
+        "description": "Choose the default exchange online license that the user will have."
       }
     },
     "defaultExchangeGroupId": {
@@ -81,7 +103,9 @@
     "storageAccountid": "[concat(resourceGroup().id,'/providers/','Microsoft.Storage/storageAccounts/', variables('storageAccountName'))]",
     "issuerUrl": "[concat('https://sts.windows.net/',parameters('azureIssuerId'),'/')]",
     "sendPasswordQueueName": "sendpasswordqueue-items",
-    "addToGroupUsersQueueName": "addtogroupusers-items"
+    "addToGroupUsersQueueName": "addtogroupusers-items",
+    "UserEmailSender": "parameters('o365AdminUser')",
+    "UserEmailPasswordCopy": "parameters('o365AdminUser')"
   },
   "resources": [
     {
@@ -151,7 +175,6 @@
               "name": "QueueConnectionString",
               "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2015-05-01-preview').key1)]"
             },
-
             {
               "name": "UserAdministrationGraphSiteId",
               "value": "[parameters('userAdministrationGraphSiteId')]"
@@ -163,6 +186,22 @@
             {
               "name": "DefaultO365UserLicense",
               "value": "[parameters('defaultO365UserLicense')]"
+            },
+            {
+              "name": "DefaultExchangeGroupId",
+              "value": "[parameters('defaultExchangeGroupId')]"
+            },
+            {
+              "name": "DefaultExchangeOnlineLicense",
+              "value": "[parameters('defaultExchangeOnlineLicense')]"
+            },
+            {
+              "name": "UserEmailSender",
+              "value": "[variables('userEmailSender')]"
+            },
+            {
+              "name": "UserEmailPasswordCopy",
+              "value": "[variables('userEmailPasswordCopy')]"
             },
             {
               "name": "DefaultExchangeGroupId",
