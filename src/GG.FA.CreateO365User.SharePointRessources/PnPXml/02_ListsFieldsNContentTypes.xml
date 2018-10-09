@@ -180,7 +180,7 @@
               <pnp:DataValue FieldName="UserFirstName" >Darth</pnp:DataValue>
               <pnp:DataValue FieldName="UserLastName" >Vader</pnp:DataValue>
               <pnp:DataValue FieldName="YearJoined" >2011</pnp:DataValue>
-              <pnp:DataValue FieldName="AlternateEMail" >sebastian.schuetze@razorspoint.com</pnp:DataValue>
+              <pnp:DataValue FieldName="AlternateEMail" >max.mustermann@contoso.com</pnp:DataValue>
               <pnp:DataValue FieldName="UserCity" >Berlin</pnp:DataValue>
               <pnp:DataValue FieldName="State" >State</pnp:DataValue>
               <pnp:DataValue FieldName="ForwardingActive" >False</pnp:DataValue>
@@ -189,7 +189,7 @@
               <pnp:DataValue FieldName="UserMobilePhone" >0172123456</pnp:DataValue>
               <pnp:DataValue FieldName="Segment" >Medien</pnp:DataValue>
               <pnp:DataValue FieldName="AccountStatus" >nicht angelegt</pnp:DataValue>
-              <pnp:DataValue FieldName="UserDomain" >razorspoint.com</pnp:DataValue>
+              <pnp:DataValue FieldName="UserDomain" >contoso.com</pnp:DataValue>
             </pnp:DataRow>
           </pnp:DataRows>
         </pnp:ListInstance>
