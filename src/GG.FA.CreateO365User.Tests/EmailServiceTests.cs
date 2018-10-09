@@ -31,12 +31,12 @@ namespace GG.FA.CreateO365User.Tests
 
 	            var emailService = new EmailService(graphService, Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Templates"));
 
-	            var user = await graphService.GetUserAsync("sebastian.schuetze@***REMOVED***");
-	            var admin = await graphService.GetUserAsync("sebastian.schuetze@***REMOVED***");
+	            var user = await graphService.GetUserAsync("sebastian.schuetze@razorspoint.com");
+	            var admin = await graphService.GetUserAsync("sebastian.schuetze@razorspoint.com");
 
 				var password = await graphService.ResetUserPasswordAsync("***REMOVED***");
 
-	            emailService.SendPasswordMailAsync(user, admin, password);
+	            emailService.SendPasswordMailAsync(user, admin, admin, password);
 
 			}).GetAwaiter().GetResult();
         }
