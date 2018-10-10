@@ -105,8 +105,8 @@
     "issuerUrl": "[concat('https://sts.windows.net/',parameters('azureIssuerId'),'/')]",
     "sendPasswordQueueName": "sendpasswordqueue-items",
     "addToGroupUsersQueueName": "addtogroupusers-items",
-    "UserEmailSender": "parameters('o365AdminUser')",
-    "UserEmailPasswordCopy": "parameters('o365AdminUser')"
+    "UserEmailSender": "[parameters('o365AdminUser')]",
+    "UserEmailPasswordCopy": "[parameters('o365AdminUser')]"
   },
   "resources": [
     {
