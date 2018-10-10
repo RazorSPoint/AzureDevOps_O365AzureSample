@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
-using GG.FA.Common.Utilities;
-using Microsoft.Azure;
+﻿using System.Threading.Tasks;
+using Contoso.Common.Utilities;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Queue;
 
-namespace GG.FA.Common.Services
+namespace Contoso.Common.Services
 {
     public class QueueService
     {

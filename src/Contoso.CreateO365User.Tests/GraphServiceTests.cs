@@ -2,8 +2,8 @@
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
-using GG.FA.Common;
-using GG.FA.Common.Services;
+using Contoso.Common.Services;
+using Contoso.Common;
 using GG.FA.CreateO365User.Tests.Mockup;
 using Microsoft.Azure.WebJobs.Host;
 using Microsoft.Graph;
