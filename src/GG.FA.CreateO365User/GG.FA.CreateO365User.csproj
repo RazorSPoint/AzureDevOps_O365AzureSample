@@ -16,14 +16,10 @@
   <ItemGroup>
     <None Remove=".gitignore" />
     <None Remove="Templates\hookMsgUserCreated.json" />
-    <None Remove="Templates\hookMsgUserDeleted.json" />
     <None Remove="Templates\WK_EmailTemplate.html" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Templates\hookMsgUserCreated.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Templates\hookMsgUserDeleted.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Templates\WK_EmailTemplate.html">
