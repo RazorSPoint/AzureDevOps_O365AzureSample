@@ -265,9 +265,6 @@
     <Content Include="Templates\hookMsgUserCreated.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Templates\hookMsgUserDeleted.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GG.FA.Common\GG.FA.Common.csproj">
