@@ -36,19 +36,5 @@ namespace GG.FA.Common.Services
 		    return true;
 	    }
 
-		public async Task<bool> AddUserToWerteAkademieGroupAsync(string userPrincipalName)
-        {
-            var isUserAddedToGroup = await AddUserToGroupAsync(userPrincipalName, "a7b56b16-9cc7-4386-8fce-a2830b5fe119");
-
-            return isUserAddedToGroup;
-        }
-
-	    public async Task<bool> AddUserToWerteBeiraeteGroupAsync(string userPrincipalName)
-	    {
-		    var isUserAddedToGroup = await AddUserToGroupAsync(userPrincipalName, "d5a50ddc-739e-46ac-97ee-9569872ea644");
-
-		    return isUserAddedToGroup;
-	    }
-
 	}
 }
