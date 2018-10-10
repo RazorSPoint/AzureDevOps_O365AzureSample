@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Runtime.Serialization.Json;
+﻿using System.Runtime.Serialization.Json;
 using System.Text;
 using System.Xml.Linq;
 
-namespace GG.FA.Common.Utilities
+namespace Contoso.Common.Utilities
 {
     /// <summary>
     /// Helper class for converting various things

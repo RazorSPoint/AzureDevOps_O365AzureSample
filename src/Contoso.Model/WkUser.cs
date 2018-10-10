@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Microsoft.Graph;
+﻿using Microsoft.Graph;
 
-namespace GG.FA.Model
+namespace Contoso.Model
 {
     public class WkUser:User
     {

@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Reflection;
-using GG.FA.Common.Utilities;
+using Contoso.Common.Utilities;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace GG.FA.CreateO365User.Tests

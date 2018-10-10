@@ -1,12 +1,12 @@
-using Microsoft.Azure.WebJobs.Extensions.Http;
+using System.Threading.Tasks;
+using Contoso.Common.Services;
+using Contoso.Common.Utilities;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Azure.WebJobs;
-using System.Threading.Tasks;
-using GG.FA.Common.Services;
-using GG.FA.Common.Utilities;
+using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.Extensions.Logging;
 
-namespace GG.FA.CreateO365User
+namespace Contoso.CreateO365User.UserOrchestration
 {
     ////////////////////////////////////////////////////////////////////////////////////////////////////
     /// <summary>   A 365 new user orchestration. </summary>

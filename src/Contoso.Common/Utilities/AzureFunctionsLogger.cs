@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using GG.FA.Common.Interfaces;
+﻿using Contoso.Common.Interfaces;
 using Microsoft.Extensions.Logging;
 
-namespace GG.FA.Common.Utilities
+namespace Contoso.Common.Utilities
 {
     /// <summary>
     /// Azure Functions logger wrapper
