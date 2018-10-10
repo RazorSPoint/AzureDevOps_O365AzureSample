@@ -6,7 +6,7 @@ namespace Contoso.CreateO365User
     {
 	    public static string UserAdministrationGraphSiteId => GetConfig("UserAdministrationGraphSiteId");
 
-	    public static string UserAdminstrationSharePointListId => GetConfig("UserAdminstrationSharePointListId");
+	    public static string UserAdministrationSharePointListId => GetConfig("UserAdministrationSharePointListId");
 
 	    public static string SendPasswordQueueName => GetConfig("SendPasswordQueueName");
 
