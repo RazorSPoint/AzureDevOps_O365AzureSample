@@ -43,7 +43,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\GG.FA.Model\GG.FA.Model.csproj" />
+    <ProjectReference Include="..\Contoso.Model\Contoso.Model.csproj" />
   </ItemGroup>
 
 </Project>

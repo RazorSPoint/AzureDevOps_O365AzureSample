@@ -3,19 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27520.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GG.FA.Common", "GG.FA.Common\GG.FA.Common.csproj", "{B49B9164-1A73-4473-B26C-2D6374D16723}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Contoso.Common", "Contoso.Common\Contoso.Common.csproj", "{B49B9164-1A73-4473-B26C-2D6374D16723}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GG.FA.CreateO365User", "GG.FA.CreateO365User\GG.FA.CreateO365User.csproj", "{45E7DE90-FB24-4A2F-8B05-83E9367BABBF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Contoso.CreateO365User", "Contoso.CreateO365User\Contoso.CreateO365User.csproj", "{45E7DE90-FB24-4A2F-8B05-83E9367BABBF}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GG.FA.Model", "GG.FA.Model\GG.FA.Model.csproj", "{AD18A4B7-DCEF-4E56-A3F7-ED484947F165}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Contoso.Model", "Contoso.Model\Contoso.Model.csproj", "{AD18A4B7-DCEF-4E56-A3F7-ED484947F165}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GG.FA.CreateO365User.Tests", "GG.FA.CreateO365User.Tests\GG.FA.CreateO365User.Tests.csproj", "{CBE64522-2600-41F2-B674-36A64BF8D42C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Contoso.CreateO365User.Tests", "Contoso.CreateO365User.Tests\Contoso.CreateO365User.Tests.csproj", "{CBE64522-2600-41F2-B674-36A64BF8D42C}"
 EndProject
-Project("{151D2E53-A2C4-4D7D-83FE-D05416EBD58E}") = "GG.FA.CreateO365User.AzureRessources", "GG.FA.CreateO365User.Ressources\GG.FA.CreateO365User.AzureRessources.deployproj", "{78B1851E-1805-4A6B-B01F-5B573EE136AF}"
+Project("{151D2E53-A2C4-4D7D-83FE-D05416EBD58E}") = "Contoso.CreateO365User.AzureRessources", "Contoso.CreateO365User.Ressources\Contoso.CreateO365User.AzureRessources.deployproj", "{78B1851E-1805-4A6B-B01F-5B573EE136AF}"
 EndProject
-Project("{F5034706-568F-408A-B7B3-4D38C6DB8A32}") = "GG.FA.CreateO365User.SharePointRessources", "GG.FA.CreateO365User.SharePointRessources\GG.FA.CreateO365User.SharePointRessources.pssproj", "{6CAFC0C6-A428-4D30-A9F9-700E829FEA51}"
+Project("{F5034706-568F-408A-B7B3-4D38C6DB8A32}") = "Contoso.CreateO365User.SharePointRessources", "Contoso.CreateO365User.SharePointRessources\Contoso.CreateO365User.SharePointRessources.pssproj", "{6CAFC0C6-A428-4D30-A9F9-700E829FEA51}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GG.FA.CreateO365User.PowerShell", "GG.FA.CreateO365User.PowerShell\GG.FA.CreateO365User.PowerShell.csproj", "{B6E2A3E3-1F13-459A-B36B-99DFD90447A7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Contoso.CreateO365User.PowerShell", "Contoso.CreateO365User.PowerShell\Contoso.CreateO365User.PowerShell.csproj", "{B6E2A3E3-1F13-459A-B36B-99DFD90447A7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
