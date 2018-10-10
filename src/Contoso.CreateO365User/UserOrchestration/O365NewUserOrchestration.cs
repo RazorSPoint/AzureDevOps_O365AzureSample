@@ -45,7 +45,7 @@ namespace Contoso.CreateO365User.UserOrchestration
 			
 	        var currUserItems = await graphService.GetUserFromSpUserListAsync(
 		        Configs.UserAdministrationGraphSiteId, 
-		        Configs.UserAdminstrationSharePointListId, 
+		        Configs.UserAdministrationSharePointListId, 
 		        true
 		    );
 

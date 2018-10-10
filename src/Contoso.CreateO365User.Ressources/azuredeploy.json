@@ -38,7 +38,7 @@
         "description": "Site id where the user administration list is."
       }
     },
-    "userAdminstrationSharePointListId": {
+    "userAdministrationSharePointListId": {
       "type": "string",
       "metadata": {
         "description": "List id of the user administration list."
@@ -181,8 +181,8 @@
               "value": "[parameters('userAdministrationGraphSiteId')]"
             },
             {
-              "name": "UserAdminstrationSharePointListId",
-              "value": "[parameters('userAdminstrationSharePointListId')]"
+              "name": "UserAdministrationSharePointListId",
+              "value": "[parameters('userAdministrationSharePointListId')]"
             },
             {
               "name": "DefaultO365UserLicense",
