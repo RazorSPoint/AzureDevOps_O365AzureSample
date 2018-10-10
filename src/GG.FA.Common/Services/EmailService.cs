@@ -89,9 +89,9 @@ namespace GG.FA.Common.Services
 			var templateString = GetMailTemplateByFile(pathToTemplates);
 
 		    templateString = templateString
-			    .Replace("#GGEmail#", email)
-			    .Replace("#GGPassword#", password)
-			    .Replace("#GGDisplayName#", displayName);
+			    .Replace("#Email#", email)
+			    .Replace("#Password#", password)
+			    .Replace("#DisplayName#", displayName);
 
 			return templateString;
 	    }
