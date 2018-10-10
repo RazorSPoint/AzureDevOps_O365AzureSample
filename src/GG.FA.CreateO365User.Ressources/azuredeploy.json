@@ -205,10 +205,6 @@
               "value": "[variables('userEmailPasswordCopy')]"
             },
             {
-              "name": "DefaultExchangeGroupId",
-              "value": "[parameters('defaultExchangeGroupId')]"
-            },
-            {
               "name": "SendPasswordQueueName",
               "value": "[variables('sendPasswordQueueName')]"
             },
