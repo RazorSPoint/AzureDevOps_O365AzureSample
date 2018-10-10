@@ -1,12 +1,7 @@
-﻿using System;
-using System.Diagnostics;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
 using Contoso.Common.Services;
-using Contoso.Common;
 using GG.FA.CreateO365User.Tests.Mockup;
-using Microsoft.Azure.WebJobs.Host;
-using Microsoft.Graph;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace GG.FA.CreateO365User.Tests
