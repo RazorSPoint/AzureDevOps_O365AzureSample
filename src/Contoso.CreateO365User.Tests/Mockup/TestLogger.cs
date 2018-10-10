@@ -1,4 +1,4 @@
-﻿using GG.FA.Common.Interfaces;
+﻿using Contoso.Common.Interfaces;
 
 namespace GG.FA.CreateO365User.Tests.Mockup
 {

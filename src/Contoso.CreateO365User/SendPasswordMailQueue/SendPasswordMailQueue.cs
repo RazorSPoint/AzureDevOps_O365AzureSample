@@ -1,14 +1,12 @@
 using System;
 using System.IO;
 using System.Threading.Tasks;
-using GG.FA.Common.Services;
-using GG.FA.Common.Utilities;
-using GG.FA.Model;
+using Contoso.Common.Services;
+using Contoso.Common.Utilities;
 using Microsoft.Azure.WebJobs;
-using Microsoft.Azure.WebJobs.Host;
 using Microsoft.Extensions.Logging;
 
-namespace GG.FA.CreateO365User
+namespace Contoso.CreateO365User.SendPasswordMailQueue
 {
     public static class SendPasswordMailQueue
     {

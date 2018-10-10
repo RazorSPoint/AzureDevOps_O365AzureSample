@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Security;
 using System.Security.Cryptography;
-using System.Xml.Serialization;
 
-namespace GG.FA.Common.Utilities
+namespace Contoso.Common.Utilities
 {
     public class Security
     {
