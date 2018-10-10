@@ -98,7 +98,7 @@ namespace GG.FA.Common.Services
 
 	    public bool SendPasswordMailAsync(User user, User userCopyMail, User admin, string password)
 	    {
-			var subject = "Der Werteakademie Account ist eingerichtet";
+			var subject = "Your Contoso Account is Ready";
 
 		    var displayName = user.DisplayName;
 			var emailString = user.UserPrincipalName;
