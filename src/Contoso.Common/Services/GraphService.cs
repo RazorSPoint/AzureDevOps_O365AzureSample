@@ -3,18 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using System.Runtime.Serialization.Json;
-using System.Text;
 using System.Threading.Tasks;
-using System.Xml.Linq;
 using System.Xml.XPath;
-using GG.FA.Common.Interfaces;
-using GG.FA.Common.Utilities;
-using GG.FA.Model;
+using Contoso.Common.Interfaces;
+using Contoso.Common.Utilities;
+using Contoso.Model;
 using Microsoft.Graph;
-using Security = GG.FA.Common.Utilities.Security;
+using Security = Contoso.Common.Utilities.Security;
 
-namespace GG.FA.Common.Services
+namespace Contoso.Common.Services
 {
     public class GraphService: IGraphService
     {

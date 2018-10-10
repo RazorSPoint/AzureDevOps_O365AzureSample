@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace GG.FA.Model
+﻿namespace Contoso.Model
 {
     public class SpUser
     {

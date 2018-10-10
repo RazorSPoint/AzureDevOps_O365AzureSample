@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Text;
+using Contoso.Common.Utilities;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace GG.FA.CreateO365User.Tests
@@ -16,7 +17,7 @@ namespace GG.FA.CreateO365User.Tests
             bool includeNumbers, bool includeSpecialChars)
         {
             var expectedLenth = length;
-            var password = Common.Utilities.Security.GetRandomPassword(length, includeLowerCase, includeUpperCase, includeNumbers, includeSpecialChars);
+            var password = Security.GetRandomPassword(length, includeLowerCase, includeUpperCase, includeNumbers, includeSpecialChars);
 
             Assert.AreEqual(expectedLenth,password.Length);
         }
@@ -25,7 +26,7 @@ namespace GG.FA.CreateO365User.Tests
         public void GetRandomPassword_WithLowerUpperNumberAndSpecialChars()
         {
             const int expectedLenth = 8;
-            var password = Common.Utilities.Security.GetRandomPassword(8,true,true,true,true);
+            var password = Security.GetRandomPassword(8,true,true,true,true);
 
             Assert.AreEqual(expectedLenth, password.Length);
         }

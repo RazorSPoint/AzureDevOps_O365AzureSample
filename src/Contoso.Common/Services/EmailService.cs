@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
+﻿using System.IO;
 using System.Linq;
-using System.Security;
-using System.Text;
-using GG.FA.Common.Utilities;
-using GG.FA.Model;
 using Microsoft.Graph;
 
-namespace GG.FA.Common.Services
+namespace Contoso.Common.Services
 {
     public class EmailService
     {

@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace GG.FA.CreateO365User
+namespace Contoso.CreateO365User
 {
     class Configs
     {
