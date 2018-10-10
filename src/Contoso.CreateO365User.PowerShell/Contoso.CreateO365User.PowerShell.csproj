@@ -12,10 +12,10 @@
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
-    <None Update="GG-FA-AddUserToGroup\function.json">
+    <None Update="AddUserToGroup\function.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="GG-FA-AddUserToGroup\run.ps1">
+    <None Update="AddUserToGroup\run.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="GG-FA-ExchangeOnline/function.json">

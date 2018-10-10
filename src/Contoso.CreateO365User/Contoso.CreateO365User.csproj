@@ -33,10 +33,6 @@
     <PackageReference Include="Microsoft.NET.Sdk.Functions" Version="1.0.22" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\GG.FA.Common\GG.FA.Common.csproj" />
-    <ProjectReference Include="..\GG.FA.Model\GG.FA.Model.csproj" />
-  </ItemGroup>
-  <ItemGroup>
     <None Update="host.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -47,5 +43,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Contoso.Common\Contoso.Common.csproj" />
+    <ProjectReference Include="..\Contoso.Model\Contoso.Model.csproj" />
   </ItemGroup>
 </Project>
