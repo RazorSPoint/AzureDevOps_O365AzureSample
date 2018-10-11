@@ -131,7 +131,7 @@
       }
     },
     {
-      "apiVersion": "2015-08-01",
+      "apiVersion": "2016-08-01",
       "type": "Microsoft.Web/sites",
       "name": "[variables('functionAppName')]",
       "location": "[resourceGroup().location]",
@@ -215,6 +215,10 @@
             {
               "name": "APPINSIGHTS_INSTRUMENTATIONKEY",
               "value": "[reference(concat('microsoft.insights/components/', variables('functionAppName'))).InstrumentationKey]"
+            },
+            {
+              "name": "FUNCTIONS_WORKER_RUNTIME",
+              "value": "dotnet"
             }
           ]
         }
