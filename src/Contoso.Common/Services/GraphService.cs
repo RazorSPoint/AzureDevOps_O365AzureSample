@@ -349,18 +349,17 @@ namespace Contoso.Common.Services
             var firstname = fields.ContainsKey("UserFirstName") ? (string)fields["UserFirstName"] : "";
             var lastname = fields.ContainsKey("UserLastName") ? (string)fields["UserLastName"] : "";
             var department = fields.ContainsKey("UserDomain") ? (string)fields["UserDomain"] : "";
-            var segment = fields.ContainsKey("Segment") ? (string)fields["Segment"] : "";
             var state = fields.ContainsKey("State") ? (string)fields["State"] : "";
             var alternateEmail = fields.ContainsKey("AlternateEMail") ? (string)fields["AlternateEMail"] : "";
             var userHomePhone = fields.ContainsKey("UserHomePhone") ? (string)fields["UserHomePhone"] : "";
-            var year = fields.ContainsKey("YearJoined") ? (string)fields["YearJoined"] : "";
             var city = fields.ContainsKey("UserCity") ? (string)fields["UserCity"] : "";
             var mobilePhone = fields.ContainsKey("UserMobilePhone") ? (string)fields["UserMobilePhone"] : "";
             var forwardEmail = fields.ContainsKey("ForwardingActive") && (bool)fields["ForwardingActive"];
             var userCircle = fields.ContainsKey("UserCircle") ? (string)fields["UserCircle"] : "";
 
             var userPrincipalName = O365UserPropertyHelper.UserPrincipalName(firstname, lastname, department);
-            var searchableDisplayName = O365UserPropertyHelper.GetSearchableDisplayName(title, firstname, lastname);
+
+            //var searchableDisplayName = O365UserPropertyHelper.GetSearchableDisplayName(title, firstname, lastname);
             var displayName = O365UserPropertyHelper.GetDisplayName(title, firstname, lastname);
           
             return new WkUser()
@@ -377,7 +376,11 @@ namespace Contoso.Common.Services
                     Password = Security.ToInsecureString(Security.GetRandomPassword(8, true, true, true, true))
                 },
                 MailNickname = $"{firstname}{lastname[0].ToString().ToUpper()}",
-                DisplayName = searchableDisplayName,
+				GivenName = firstname,
+				Surname = lastname,
+				AlternativeMail = alternateEmail,
+				ForwardMail = forwardEmail,
+				DisplayName = displayName,
                 City = city,
                 State = state,
                 UsageLocation = "DE"
