@@ -182,7 +182,7 @@
               <pnp:DataValue FieldName="YearJoined" >2011</pnp:DataValue>
               <pnp:DataValue FieldName="AlternateEMail" >max.mustermann@contoso.com</pnp:DataValue>
               <pnp:DataValue FieldName="UserCity" >Berlin</pnp:DataValue>
-              <pnp:DataValue FieldName="State" >State</pnp:DataValue>
+              <pnp:DataValue FieldName="State" >Berlin</pnp:DataValue>
               <pnp:DataValue FieldName="ForwardingActive" >False</pnp:DataValue>
               <pnp:DataValue FieldName="Testbenutzer" >True</pnp:DataValue>
               <pnp:DataValue FieldName="UserHomePhone" >030123456</pnp:DataValue>
