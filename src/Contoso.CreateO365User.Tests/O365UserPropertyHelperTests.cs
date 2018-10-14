@@ -29,9 +29,9 @@ namespace GG.FA.CreateO365User.Tests
         }
 
         [TestMethod]
-        [DataRow("Sebastian", "Schütze", "***REMOVED***")]
-        [DataRow("Sebastian", "Müller", "***REMOVED***")]
-        [DataRow("$&§/U6u3265z", "%§&/$", "***REMOVED***")]
+        [DataRow("Sebastian", "Schütze", "contoso.com")]
+        [DataRow("Sebastian", "Müller", "microsoft.com")]
+        [DataRow("$&§/U6u3265z", "%§&/$", "google.com")]
         [DataRow("", "", "")]
         public void GetUserPrincipalName_Multiple(string firstname, string lastname, string domain)
         {
