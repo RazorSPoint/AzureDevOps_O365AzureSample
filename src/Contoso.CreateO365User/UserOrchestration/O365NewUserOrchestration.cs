@@ -16,7 +16,7 @@ namespace Contoso.CreateO365User.UserOrchestration
     /// <seealso cref="https://github.com/microsoftgraph/uwp-csharp-snippets-sample/blob/master/Microsoft-Graph-Snippets-SDK/Groups/GroupSnippets.cs"/>
     /// <seealso cref="https://msdn.microsoft.com/en-us/library/azure/ad/graph/api/users-operations#CreateUser"/>
     /// <seealso cref="https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/samples/GraphExtensionSamples/TokenExamples.cs"/>
-    /// <seealso cref="https://login.microsoftonline.com/common/adminconsent?client_id=***REMOVED***&state=12345&redirect_uri=https://***REMOVED***.azurewebsites.net/.auth/login/aad/callback"/>
+    /// <seealso cref="https://login.microsoftonline.com/common/adminconsent?client_id=53645622-a9b4-4fea-b8ba-ab2c388fab7b&state=12345&redirect_uri=https://gg-fa-createo365user.azurewebsites.net/.auth/login/aad/callback"/>
     /// <seealso cref="https://resources.azure.com"/>
     ////////////////////////////////////////////////////////////////////////////////////////////////////
 

@@ -41,9 +41,9 @@ namespace GG.FA.Common.Services
 		{
 			string aadInstance = "https://login.microsoftonline.com";
 			string tenant = "gutgoedelitz.onmicrosoft.com";
-			string clientId = "***REMOVED***";
+			string clientId = "53645622-a9b4-4fea-b8ba-ab2c388fab7b";
 			string authority = String.Format(CultureInfo.InvariantCulture, aadInstance, tenant);
-			string sharePointUrl = "***REMOVED***";
+			string sharePointUrl = "gutgoedelitz.sharepoint.com";
 
 			var authContext = new AuthenticationContext(authority);
 
