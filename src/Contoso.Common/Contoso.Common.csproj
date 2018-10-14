@@ -33,10 +33,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Remove="Services\SharePointService.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.Azure.WebJobs.Extensions.Storage" Version="3.0.0" />
     <PackageReference Include="Microsoft.Graph" Version="1.11.0" />
     <PackageReference Include="System.Security.Cryptography.ProtectedData" Version="4.5.0" />
