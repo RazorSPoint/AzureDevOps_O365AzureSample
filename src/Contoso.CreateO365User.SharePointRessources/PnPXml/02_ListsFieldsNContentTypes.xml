@@ -189,7 +189,7 @@
               <pnp:DataValue FieldName="UserMobilePhone" >0172123456</pnp:DataValue>
               <pnp:DataValue FieldName="Segment" >Medien</pnp:DataValue>
               <pnp:DataValue FieldName="AccountStatus" >nicht angelegt</pnp:DataValue>
-              <pnp:DataValue FieldName="UserDomain" >contoso.com</pnp:DataValue>
+              <pnp:DataValue FieldName="UserDomain" >razorspoint.com</pnp:DataValue>
             </pnp:DataRow>
           </pnp:DataRows>
         </pnp:ListInstance>
