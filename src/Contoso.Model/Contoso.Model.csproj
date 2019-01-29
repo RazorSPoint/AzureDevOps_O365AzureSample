@@ -4,6 +4,39 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <Platforms>AnyCPU;x86</Platforms>
     <Configurations>Debug;Release;Debug Common Library;Release Common Library</Configurations>
+    <ProjectGuid>{AD18A4B7-DCEF-4E56-A3F7-ED484947F165}</ProjectGuid>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <CodeAnalysisRuleSet>Contoso.Model.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x86'">
+    <CodeAnalysisRuleSet>Contoso.Model.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <CodeAnalysisRuleSet>Contoso.Model.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">
+    <CodeAnalysisRuleSet>Contoso.Model.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release Common Library|AnyCPU'">
+    <CodeAnalysisRuleSet>Contoso.Model.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release Common Library|x86'">
+    <CodeAnalysisRuleSet>Contoso.Model.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug Common Library|AnyCPU'">
+    <CodeAnalysisRuleSet>Contoso.Model.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug Common Library|x86'">
+    <CodeAnalysisRuleSet>Contoso.Model.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
 
   <ItemGroup>
