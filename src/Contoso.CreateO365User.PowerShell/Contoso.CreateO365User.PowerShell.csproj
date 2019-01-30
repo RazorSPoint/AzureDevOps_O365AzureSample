@@ -4,6 +4,7 @@
     <AssemblyName>GG.FA.CreateO365User.PowerShell</AssemblyName>
     <RootNamespace>GG.FA.CreateO365User.PowerShell</RootNamespace>
     <Configurations>Debug;Release;Debug Common Library;Release Common Library</Configurations>
+    <ProjectGuid>{B6E2A3E3-1F13-459A-B36B-99DFD90447A7}</ProjectGuid>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <CodeAnalysisRuleSet>Contoso.CreateO365User.PowerShell.ruleset</CodeAnalysisRuleSet>
