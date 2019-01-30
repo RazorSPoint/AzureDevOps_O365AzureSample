@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{CBE64522-2600-41F2-B674-36A64BF8D42C}</ProjectGuid>
+    <ProjectGuid>CBE64522-2600-41F2-B674-36A64BF8D42C</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>GG.FA.CreateO365User.Tests</RootNamespace>
