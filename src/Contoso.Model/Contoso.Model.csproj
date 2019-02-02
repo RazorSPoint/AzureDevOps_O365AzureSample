@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <DebugType>Full</DebugType>
     <Platforms>AnyCPU;x86</Platforms>
     <Configurations>Debug;Release;Debug Common Library;Release Common Library</Configurations>
   </PropertyGroup>
