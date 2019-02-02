@@ -1,5 +1,6 @@
 ﻿using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.Graph;
 
 namespace Contoso.Common.Services
@@ -15,7 +16,7 @@ namespace Contoso.Common.Services
 		    _templatePath = templatePath;
 	    }
 
-	    public async void SendMailAsync(string sendByUserEmail, string[] toRecipientMails,string[] bccRecipientMails, string replyToMail, string subject, string bodyString)
+	    public async Task SendMailAsync(string sendByUserEmail, string[] toRecipientMails,string[] bccRecipientMails, string replyToMail, string subject, string bodyString)
 	    {
 			var toRecipients = toRecipientMails.Select(email => new Recipient()
 		    {
@@ -60,9 +61,8 @@ namespace Contoso.Common.Services
 			    From = replyTo,
 			    ReplyTo = new[] { replyTo }
 		    };
-
-
-		    await _graphService.GraphClient.Users[sendByUserEmail].SendMail(mail, true)
+					   
+			await _graphService.GraphClient.Users[sendByUserEmail].SendMail(mail, true)
 			    .Request().PostAsync();
 		}
 
@@ -90,7 +90,7 @@ namespace Contoso.Common.Services
 			return templateString;
 	    }
 
-	    public bool SendPasswordMailAsync(User user, User userCopyMail, User admin, string password)
+	    public async Task SendPasswordMailAsync(User user, User userCopyMail, User admin, string password)
 	    {
 			var subject = "Your Contoso Account is Ready";
 
@@ -101,9 +101,7 @@ namespace Contoso.Common.Services
 
 			var mailBody = GetUserPasswordMail(emailString, displayName, password);
 
-		    SendMailAsync(admin.UserPrincipalName, toMail, bccMail, bccMail[0], subject, mailBody);
-
-			return true;
+			await SendMailAsync(admin.UserPrincipalName, toMail, bccMail, bccMail[0], subject, mailBody);
 	    }
 
     }

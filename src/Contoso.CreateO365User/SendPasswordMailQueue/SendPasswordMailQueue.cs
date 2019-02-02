@@ -49,7 +49,7 @@ namespace Contoso.CreateO365User.SendPasswordMailQueue
 					throw new Exception($"The Exchange is not yet assigned or deployed for user '{userPrincipalName}'");
 				}
 
-		        emailService.SendPasswordMailAsync(user, userCopyMail, admin, userPassword);
+		        await emailService.SendPasswordMailAsync(user, userCopyMail, admin, userPassword);
 
 	        }).GetAwaiter().GetResult();
 
