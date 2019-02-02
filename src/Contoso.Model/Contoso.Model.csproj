@@ -5,6 +5,7 @@
     <DebugType>Full</DebugType>
     <Platforms>AnyCPU;x86</Platforms>
     <Configurations>Debug;Release;Debug Common Library;Release Common Library</Configurations>
+    <ProjectGuid>{83556983-C00B-4C7D-8CA3-25E23DE196D2}</ProjectGuid>
   </PropertyGroup>
 
   <ItemGroup>
