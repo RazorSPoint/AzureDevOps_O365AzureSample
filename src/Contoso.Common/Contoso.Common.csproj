@@ -4,7 +4,6 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <Platforms>AnyCPU;x86</Platforms>
     <Configurations>Debug;Release;Debug Common Library;Release Common Library</Configurations>
-    <DebugType>Full</DebugType>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
