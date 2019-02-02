@@ -38,7 +38,6 @@
   <ItemGroup>
     <Compile Include="PnPXml\01_WebSettings.xml" />
     <Compile Include="Add-SharePointRessources.ps1" />
-    <Compile Include="Add-SharePointRessources.tests.ps1" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="PnPXml\02_ListsFieldsNContentTypes.xml" />
