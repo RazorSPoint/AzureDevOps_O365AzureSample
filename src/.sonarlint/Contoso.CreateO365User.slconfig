@@ -1,0 +1,14 @@
+{
+  "ServerUri": "https://sonarcloud.io/",
+  "Organization": {
+    "Key": "razorspoint",
+    "Name": "RazorSpoint Code Analyzer"
+  },
+  "ProjectKey": "O365CreateUsers",
+  "Profiles": {
+    "CSharp": {
+      "ProfileKey": "AWh1F2GFD2RnRo7Tn2Vl",
+      "ProfileTimestamp": "2019-01-14T10:58:53+01:00"
+    }
+  }
+}
