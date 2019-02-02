@@ -121,9 +121,8 @@ namespace Contoso.Common.Services
 
         public async Task<string> CreateUserAsync(User user)
         {
-            string createdUserId = null;
-
-            try
+			string createdUserId;
+			try
             {
                 //var organization = await GraphClient.Organization.Request().GetAsync();
                 //var domain = organization.CurrentPage[0].VerifiedDomains.ElementAt(0).Name;
@@ -197,9 +196,8 @@ namespace Contoso.Common.Services
 
 		public async Task<bool> AddUserToGroupAsync(string userId, string groupId)
         {
-            var userAdded = false;
-         
-            try
+			bool userAdded;
+			try
             {
                 var userToAdd = new User { Id = userId };
 
