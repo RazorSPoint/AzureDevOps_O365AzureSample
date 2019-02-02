@@ -90,7 +90,7 @@ namespace Contoso.Common.Utilities
         /// <see cref="https://stackoverflow.com/questions/3404421/password-masking-console-application"/>
         public static string ReadPasswordFromConsole(string consoleMessage)
         {
-            var password = "";
+            var password = string.Empty;
             var key = new ConsoleKeyInfo();
 
             Console.Write(consoleMessage);
@@ -216,7 +216,7 @@ namespace Contoso.Common.Utilities
                 (!includeSpecialChars || passwordTemplate.Contains("S"))
             ));
 
-            var password = "";
+            string password = string.Empty;
             var randomChar = new Random();
             foreach (var ch in passwordTemplate)
             {
